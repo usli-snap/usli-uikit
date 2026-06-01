@@ -57,9 +57,6 @@
               "-d",
               "projects/ui-sdk"
             ],
-            "styles": [
-              "projects/ui-sdk/src/lib/styles.css"
-            ],
             "outputDir": "storybook-static"
           }
         }
