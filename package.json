@@ -6,7 +6,15 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "storybook": "ng run ui-sdk:storybook",
+    "build-storybook": "ng run ui-sdk:build-storybook",
+    "build:showcase:pages": "ng build showcase --configuration production --output-mode static --base-href ./ --deploy-url ./",
+    "serve:showcase": "ng serve showcase --port 666",
+    "run:story": "concurrently \"npm run serve:ssr:showcase\" \"npm run storybook\"",
+    "compodoc": "compodoc -p projects/ui-sdk/tsconfig.lib.json -d docs --theme default",
+    "compodoc:ci": "compodoc -p projects/ui-sdk/tsconfig.lib.json -d dist/compodoc/ui-sdk --theme default",
+    "run:dsm": "concurrently \"ng build ui-sdk --watch\" \"npm run serve:showcase\""
   },
   "private": true,
   "packageManager": "npm@11.6.4",
@@ -16,14 +24,32 @@
     "@angular/core": "^21.2.0",
     "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
+    "@angular/platform-server": "^21.2.0",
     "@angular/router": "^21.2.0",
+    "@angular/ssr": "^21.2.10",
+    "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@angular-devkit/architect": "^0.2102.0",
+    "@angular-devkit/build-angular": "^21.2.0",
+    "@angular-devkit/core": "^21.2.0",
+    "@angular/build": "^21.2.10",
     "@angular/cli": "^21.2.10",
     "@angular/compiler-cli": "^21.2.0",
+    "@angular/platform-browser-dynamic": "^21.2.0",
+    "@compodoc/compodoc": "^1.2.1",
+    "@storybook/addon-a11y": "^10.3.6",
+    "@storybook/addon-docs": "^10.3.6",
+    "@storybook/angular": "^10.3.6",
+    "@types/express": "^5.0.1",
+    "@types/node": "^20.17.19",
+    "jsdom": "^28.0.0",
+    "ng-packagr": "^21.2.0",
     "prettier": "^3.8.1",
-    "typescript": "~5.9.2"
+    "storybook": "^10.3.6",
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.8"
   }
 }

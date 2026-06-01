@@ -1,0 +1,109 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build showcase app
+        run: npm run build:showcase:pages
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Build Compodoc
+        run: npm run compodoc:ci
+
+      - name: Assemble GitHub Pages site
+        run: |
+          mkdir -p public
+
+          if [ -d dist/showcase/browser ]; then
+            cp -R dist/showcase/browser public/showcase
+          elif [ -d dist/showcase ]; then
+            cp -R dist/showcase public/showcase
+          else
+            echo "Could not find showcase build output in dist/showcase"
+            exit 1
+          fi
+
+          cp -R storybook-static public/storybook
+          cp -R dist/compodoc/ui-sdk public/compodoc
+
+          cat > public/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <title>UI SDK Docs</title>
+              <style>
+                body {
+                  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                  margin: 2rem;
+                  line-height: 1.5;
+                }
+                h1 {
+                  margin-bottom: 0.5rem;
+                }
+                ul {
+                  padding-left: 1.2rem;
+                }
+                li {
+                  margin: 0.4rem 0;
+                }
+              </style>
+            </head>
+            <body>
+              <h1>UI SDK Pages</h1>
+              <p>Published artifacts:</p>
+              <ul>
+                <li><a href="./showcase/">Showcase App</a></li>
+                <li><a href="./storybook/">Storybook</a></li>
+                <li><a href="./compodoc/">Compodoc</a></li>
+              </ul>
+            </body>
+          </html>
+          HTML
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
