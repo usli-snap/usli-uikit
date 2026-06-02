@@ -125,9 +125,13 @@ jobs:
               align-items: center;
               font-family: Poppins, sans-serif;
             }
-            .usli-navbar__link:hover {
+            .usli-navbar__link:hover,
+            .usli-navbar__link--active {
               background-color: rgba(0, 158, 228, 0.1);
               border-bottom-color: #009ee4;
+            }
+            .usli-navbar__link--active {
+              font-weight: 700;
             }
             @media (max-width: 640px) {
               .usli-navbar__container {
@@ -145,6 +149,17 @@ jobs:
               }
             }
           </style>
+          <script>
+            (function () {
+              var links = Array.from(document.querySelectorAll('.usli-navbar__link'));
+              var current = window.location.href.split('?')[0].split('#')[0].replace(/\/+$/, '');
+              var match = links
+                .map(function (l) { return { el: l, href: l.getAttribute('href').replace(/\/+$/, '') }; })
+                .filter(function (l) { return current === l.href || current.startsWith(l.href + '/'); })
+                .sort(function (a, b) { return b.href.length - a.href.length; })[0];
+              if (match) match.el.classList.add('usli-navbar__link--active');
+            })();
+          </script>
           NAVBAR
 
           # Inject navbar into Storybook

@@ -1,0 +1,27 @@
+<nav class="usli-navbar">
+  <div class="usli-navbar__container">
+    <a [href]="homeUrl" class="usli-navbar__brand">UI SDK</a>
+    <ul class="usli-navbar__links">
+      <li>
+        <a [href]="homeUrl" class="usli-navbar__link" [class.usli-navbar__link--active]="isActive(homeUrl)">
+          Home
+        </a>
+      </li>
+      <li>
+        <a [href]="showcaseUrl" class="usli-navbar__link" [class.usli-navbar__link--active]="isActive(showcaseUrl)">
+          Showcase
+        </a>
+      </li>
+      <li>
+        <a [href]="storybookUrl" class="usli-navbar__link" [class.usli-navbar__link--active]="isActive(storybookUrl)">
+          Storybook
+        </a>
+      </li>
+      <li>
+        <a [href]="compodocUrl" class="usli-navbar__link" [class.usli-navbar__link--active]="isActive(compodocUrl)">
+          Compodoc
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
