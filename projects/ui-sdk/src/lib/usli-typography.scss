@@ -1,5 +1,8 @@
-// Google Fonts — Roboto (300–900) + Open Sans (300–800)
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Roboto:wght@300;400;500;600;700;900&display=swap');
+// Google Fonts — load via <link> in HTML rather than @import to avoid css-loader issues.
+// Roboto: wght@300;400;500;600;700;900
+// Open Sans: wght@300;400;600;700;800
+// Combined URL:
+// https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Roboto:wght@300;400;500;600;700;900&display=swap
 
 // 1rem = 16px (reference: https://pixelsconverter.com/px-to-rem)
 
