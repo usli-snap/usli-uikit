@@ -40,6 +40,10 @@
           "options": {
             "configDir": "projects/ui-sdk/.storybook",
             "browserTarget": "ui-sdk:build",
+            "styles": [
+              "projects/ui-sdk/src/lib/usli-palette.scss",
+              "projects/ui-sdk/src/lib/usli-typography.scss"
+            ],
             "compodoc": true,
             "compodocArgs": [
               "-e",
@@ -55,6 +59,10 @@
           "options": {
             "configDir": "projects/ui-sdk/.storybook",
             "browserTarget": "ui-sdk:build",
+            "styles": [
+              "projects/ui-sdk/src/lib/usli-palette.scss",
+              "projects/ui-sdk/src/lib/usli-typography.scss"
+            ],
             "compodoc": true,
             "compodocArgs": [
               "-e",
