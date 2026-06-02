@@ -4,7 +4,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.html',
-  styleUrl: './navbar.scss',
+  styleUrls: ['../../assets/usli-navbar.css', './navbar.scss'],
 })
 export class Navbar {
   private readonly doc = inject(DOCUMENT);

@@ -1,0 +1,101 @@
+.usli-navbar,
+.usli-navbar * {
+  box-sizing: border-box;
+}
+
+.usli-navbar {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(90deg, #001844 0%, #00338e 100%) !important;
+  border-bottom: 2px solid #009ee4 !important;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 24, 68, 0.12);
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.usli-navbar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+
+.usli-navbar__brand {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: color 200ms ease;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.usli-navbar__brand:hover {
+  color: #009ee4 !important;
+}
+
+.usli-navbar__links {
+  display: flex !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0;
+}
+
+.usli-navbar__links li {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.usli-navbar__link {
+  display: flex !important;
+  align-items: center;
+  padding: 0.5rem 1.25rem !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  font-family: 'Poppins', sans-serif !important;
+  transition: all 200ms ease;
+  border-bottom: 2px solid transparent !important;
+  height: 56px;
+  background: none !important;
+  border-radius: 0 !important;
+  line-height: normal !important;
+  letter-spacing: normal !important;
+}
+
+.usli-navbar__link:hover,
+.usli-navbar__link--active {
+  background-color: rgba(0, 158, 228, 0.1) !important;
+  border-bottom-color: #009ee4 !important;
+}
+
+.usli-navbar__link--active {
+  font-weight: 700 !important;
+}
+
+@media (max-width: 640px) {
+  .usli-navbar__container {
+    flex-direction: column;
+    height: auto;
+    padding: 0.5rem 1rem;
+  }
+
+  .usli-navbar__links {
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .usli-navbar__link {
+    padding: 0.5rem 1rem !important;
+    font-size: 13px !important;
+    height: auto;
+  }
+}
