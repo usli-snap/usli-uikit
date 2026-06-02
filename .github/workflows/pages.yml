@@ -168,7 +168,7 @@ jobs:
               const fs = require('fs');
               const navbar = fs.readFileSync('/tmp/navbar.html', 'utf8');
               let html = fs.readFileSync('public/storybook/index.html', 'utf8');
-              html = html.replace('<body', '<body>' + navbar);
+              html = html.replace(/<body([^>]*)>/, '<body\$1>' + navbar);
               fs.writeFileSync('public/storybook/index.html', html);
             "
           fi
@@ -179,7 +179,7 @@ jobs:
               const fs = require('fs');
               const navbar = fs.readFileSync('/tmp/navbar.html', 'utf8');
               let html = fs.readFileSync('public/compodoc/index.html', 'utf8');
-              html = html.replace('<body', '<body>' + navbar);
+              html = html.replace(/<body([^>]*)>/, '<body\$1>' + navbar);
               fs.writeFileSync('public/compodoc/index.html', html);
             "
           fi
@@ -361,7 +361,7 @@ jobs:
             const fs = require('fs');
             const navbar = fs.readFileSync('/tmp/navbar.html', 'utf8');
             let html = fs.readFileSync('public/index.html', 'utf8');
-            html = html.replace('<body', '<body>' + navbar);
+            html = html.replace(/<body([^>]*)>/, '<body\$1>' + navbar);
             fs.writeFileSync('public/index.html', html);
           "
 
