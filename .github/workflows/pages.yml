@@ -46,6 +46,7 @@ jobs:
       - name: Assemble GitHub Pages site
         run: |
           mkdir -p public
+          PAGES_BASE="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY##*/}"
 
           if [ -d dist/showcase/browser ]; then
             cp -R dist/showcase/browser public/showcase
@@ -60,15 +61,15 @@ jobs:
           cp -R dist/compodoc/ui-sdk public/compodoc
 
           # Create navbar HTML snippet
-          cat > /tmp/navbar.html <<'NAVBAR'
+          cat > /tmp/navbar.html <<NAVBAR
           <nav class="usli-navbar">
             <div class="usli-navbar__container">
-              <a href="./" class="usli-navbar__brand">UI SDK</a>
+              <a href="${PAGES_BASE}/" class="usli-navbar__brand">UI SDK</a>
               <ul class="usli-navbar__links">
-                <li><a href="./" class="usli-navbar__link">Home</a></li>
-                <li><a href="./showcase/" class="usli-navbar__link">Showcase</a></li>
-                <li><a href="./storybook/" class="usli-navbar__link">Storybook</a></li>
-                <li><a href="./compodoc/" class="usli-navbar__link">Compodoc</a></li>
+                <li><a href="${PAGES_BASE}/" class="usli-navbar__link">Home</a></li>
+                <li><a href="${PAGES_BASE}/showcase/" class="usli-navbar__link">Showcase</a></li>
+                <li><a href="${PAGES_BASE}/storybook/" class="usli-navbar__link">Storybook</a></li>
+                <li><a href="${PAGES_BASE}/compodoc/" class="usli-navbar__link">Compodoc</a></li>
               </ul>
             </div>
           </nav>
