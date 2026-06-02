@@ -54,7 +54,7 @@ import type { User } from './user';
     </div>
   </div>
 </header>`,
-  styleUrls: ['./header.css'],
+  styleUrls: ['./header.scss'],
 })
 export class HeaderComponent {
   user = input<User | null>(null);

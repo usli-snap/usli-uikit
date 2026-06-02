@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component, computed, input, output } from '@an
 >
   {{ label() }}
 </button>`,
-  styleUrls: ['./button.css'],
+  styleUrls: ['./button.scss'],
 })
 export class ButtonComponent {
   /** Is this the principal call to action on the page? */
