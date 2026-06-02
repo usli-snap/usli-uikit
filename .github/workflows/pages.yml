@@ -59,6 +59,115 @@ jobs:
           cp -R storybook-static public/storybook
           cp -R dist/compodoc/ui-sdk public/compodoc
 
+          # Create navbar HTML snippet
+          cat > /tmp/navbar.html <<'NAVBAR'
+          <nav class="usli-navbar">
+            <div class="usli-navbar__container">
+              <a href="./" class="usli-navbar__brand">UI SDK</a>
+              <ul class="usli-navbar__links">
+                <li><a href="./" class="usli-navbar__link">Home</a></li>
+                <li><a href="./showcase/" class="usli-navbar__link">Showcase</a></li>
+                <li><a href="./storybook/" class="usli-navbar__link">Storybook</a></li>
+                <li><a href="./compodoc/" class="usli-navbar__link">Compodoc</a></li>
+              </ul>
+            </div>
+          </nav>
+          <style>
+            .usli-navbar {
+              background: linear-gradient(90deg, #001844 0%, #00338e 100%);
+              border-bottom: 2px solid #009ee4;
+              position: sticky;
+              top: 0;
+              z-index: 1000;
+              box-shadow: 0 2px 8px rgba(0, 24, 68, 0.12);
+            }
+            .usli-navbar__container {
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 0 1rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              height: 56px;
+            }
+            .usli-navbar__brand {
+              font-size: 18px;
+              font-weight: 700;
+              color: #ffffff;
+              text-decoration: none;
+              transition: color 200ms ease;
+            }
+            .usli-navbar__brand:hover {
+              color: #009ee4;
+            }
+            .usli-navbar__links {
+              display: flex;
+              list-style: none;
+              margin: 0;
+              padding: 0;
+              gap: 0;
+            }
+            .usli-navbar__links li {
+              margin: 0;
+            }
+            .usli-navbar__link {
+              display: block;
+              padding: 0.5rem 1.25rem;
+              color: #ffffff;
+              text-decoration: none;
+              font-size: 14px;
+              font-weight: 500;
+              transition: all 200ms ease;
+              border-bottom: 2px solid transparent;
+              height: 56px;
+              display: flex;
+              align-items: center;
+              font-family: Poppins, sans-serif;
+            }
+            .usli-navbar__link:hover {
+              background-color: rgba(0, 158, 228, 0.1);
+              border-bottom-color: #009ee4;
+            }
+            @media (max-width: 640px) {
+              .usli-navbar__container {
+                flex-direction: column;
+                height: auto;
+              }
+              .usli-navbar__links {
+                flex-wrap: wrap;
+                width: 100%;
+                justify-content: center;
+              }
+              .usli-navbar__link {
+                padding: 0.5rem 1rem;
+                font-size: 13px;
+              }
+            }
+          </style>
+          NAVBAR
+
+          # Inject navbar into Storybook
+          if [ -f public/storybook/index.html ]; then
+            node - <<'INJECT_SCRIPT'
+            const fs = require('fs');
+            const navbar = fs.readFileSync('/tmp/navbar.html', 'utf8');
+            let html = fs.readFileSync('public/storybook/index.html', 'utf8');
+            html = html.replace('<body', `<body>${navbar}`);
+            fs.writeFileSync('public/storybook/index.html', html);
+            INJECT_SCRIPT
+          fi
+
+          # Inject navbar into Compodoc
+          if [ -f public/compodoc/index.html ]; then
+            node - <<'INJECT_SCRIPT'
+            const fs = require('fs');
+            const navbar = fs.readFileSync('/tmp/navbar.html', 'utf8');
+            let html = fs.readFileSync('public/compodoc/index.html', 'utf8');
+            html = html.replace('<body', `<body>${navbar}`);
+            fs.writeFileSync('public/compodoc/index.html', html);
+            INJECT_SCRIPT
+          fi
+
           cat > public/index.html <<'HTML'
           <!doctype html>
           <html lang="en">
@@ -203,6 +312,7 @@ jobs:
               </style>
             </head>
             <body>
+              $(cat /tmp/navbar.html)
               <main class="shell">
                 <header class="hero">
                   <p class="eyebrow">Design System Portal</p>
