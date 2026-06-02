@@ -148,24 +148,24 @@ jobs:
 
           # Inject navbar into Storybook
           if [ -f public/storybook/index.html ]; then
-            node - <<'INJECT_SCRIPT'
-            const fs = require('fs');
-            const navbar = fs.readFileSync('/tmp/navbar.html', 'utf8');
-            let html = fs.readFileSync('public/storybook/index.html', 'utf8');
-            html = html.replace('<body', `<body>${navbar}`);
-            fs.writeFileSync('public/storybook/index.html', html);
-            INJECT_SCRIPT
+            node -e "
+              const fs = require('fs');
+              const navbar = fs.readFileSync('/tmp/navbar.html', 'utf8');
+              let html = fs.readFileSync('public/storybook/index.html', 'utf8');
+              html = html.replace('<body', '<body>' + navbar);
+              fs.writeFileSync('public/storybook/index.html', html);
+            "
           fi
 
           # Inject navbar into Compodoc
           if [ -f public/compodoc/index.html ]; then
-            node - <<'INJECT_SCRIPT'
-            const fs = require('fs');
-            const navbar = fs.readFileSync('/tmp/navbar.html', 'utf8');
-            let html = fs.readFileSync('public/compodoc/index.html', 'utf8');
-            html = html.replace('<body', `<body>${navbar}`);
-            fs.writeFileSync('public/compodoc/index.html', html);
-            INJECT_SCRIPT
+            node -e "
+              const fs = require('fs');
+              const navbar = fs.readFileSync('/tmp/navbar.html', 'utf8');
+              let html = fs.readFileSync('public/compodoc/index.html', 'utf8');
+              html = html.replace('<body', '<body>' + navbar);
+              fs.writeFileSync('public/compodoc/index.html', html);
+            "
           fi
 
           cat > public/index.html <<'HTML'
@@ -312,7 +312,6 @@ jobs:
               </style>
             </head>
             <body>
-              $(cat /tmp/navbar.html)
               <main class="shell">
                 <header class="hero">
                   <p class="eyebrow">Design System Portal</p>
@@ -340,6 +339,15 @@ jobs:
             </body>
           </html>
           HTML
+
+          # Inject navbar into landing page
+          node -e "
+            const fs = require('fs');
+            const navbar = fs.readFileSync('/tmp/navbar.html', 'utf8');
+            let html = fs.readFileSync('public/index.html', 'utf8');
+            html = html.replace('<body', '<body>' + navbar);
+            fs.writeFileSync('public/index.html', html);
+          "
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
