@@ -2,13 +2,13 @@
   display: inline-block;
   cursor: pointer;
   border: 0;
-  border-radius: 3em;
+  border-radius: 0.25rem;
   font-weight: 700;
   line-height: 1;
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   &--primary {
-    background-color: #555ab9;
+    background-color: var(--blue-500);
     color: white;
   }
 
@@ -24,7 +24,7 @@
   }
 
   &--medium {
-    padding: 11px 20px;
+    padding: 12px 24px;
     font-size: 14px;
   }
 
