@@ -41,8 +41,12 @@
             "configDir": "projects/ui-sdk/.storybook",
             "browserTarget": "ui-sdk:build",
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/ui-sdk/src/lib/usli-palette.scss",
               "projects/ui-sdk/src/lib/usli-typography.scss"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ],
             "compodoc": true,
             "compodocArgs": [
@@ -60,8 +64,12 @@
             "configDir": "projects/ui-sdk/.storybook",
             "browserTarget": "ui-sdk:build",
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/ui-sdk/src/lib/usli-palette.scss",
               "projects/ui-sdk/src/lib/usli-typography.scss"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ],
             "compodoc": true,
             "compodocArgs": [
@@ -99,7 +107,11 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/showcase/src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ],
             "server": "projects/showcase/src/main.server.ts",
             "outputMode": "server",

@@ -2,21 +2,16 @@
   display: inline-block;
 }
 
+// Base overrides shared by both variants — applied on top of Bootstrap's .btn
 .usli-button {
+  font-family: var(--font-roboto, 'Roboto', sans-serif);
+  font-weight: var(--fw-medium, 500);
+  letter-spacing: var(--type-button-spacing, 0.08em);
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  cursor: pointer;
-  border: 2px solid transparent;
-  border-radius: 0.25rem;
-  font-family: var(--font-roboto, 'Roboto', sans-serif);
-  font-weight: var(--fw-medium, 500);
-  font-size: var(--fs-button, 0.875rem);
-  letter-spacing: var(--type-button-spacing, 0.08em);
-  text-transform: uppercase;
-  line-height: 1;
-  white-space: nowrap;
   transition: background-color 200ms ease, border-color 200ms ease,
               color 200ms ease, box-shadow 200ms ease;
 
@@ -24,59 +19,37 @@
     outline: 3px solid var(--blue-300, #4d78c9);
     outline-offset: 2px;
   }
+}
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.4;
-    pointer-events: none;
-  }
+// ── Primary — filled USLI Blue ─────────────────────────────────────────────
+// Overrides Bootstrap's --bs-btn-* custom properties; no specificity fights.
+.btn-usli-primary {
+  --bs-btn-color:          #ffffff;
+  --bs-btn-bg:             var(--blue-500, #00338e);
+  --bs-btn-border-color:   var(--blue-500, #00338e);
+  --bs-btn-hover-color:    #ffffff;
+  --bs-btn-hover-bg:       var(--blue-600, #002c7c);
+  --bs-btn-hover-border:   var(--blue-600, #002c7c);
+  --bs-btn-active-color:   #ffffff;
+  --bs-btn-active-bg:      var(--blue-700, #00216a);
+  --bs-btn-active-border:  var(--blue-700, #00216a);
+  --bs-btn-disabled-color: #ffffff;
+  --bs-btn-disabled-bg:    var(--blue-400, #255dbf);
+  --bs-btn-disabled-border:var(--blue-400, #255dbf);
+}
 
-  // ── Variants ──────────────────────────────────────────────────────────────
-
-  &--primary {
-    background-color: var(--blue-500, #00338e);
-    border-color: var(--blue-500, #00338e);
-    color: #ffffff;
-
-    &:hover:not(:disabled) {
-      background-color: var(--blue-600, #002c7c);
-      border-color: var(--blue-600, #002c7c);
-    }
-
-    &:active:not(:disabled) {
-      background-color: var(--blue-700, #00216a);
-      border-color: var(--blue-700, #00216a);
-    }
-  }
-
-  &--secondary {
-    background-color: transparent;
-    border-color: var(--blue-500, #00338e);
-    color: var(--blue-500, #00338e);
-
-    &:hover:not(:disabled) {
-      background-color: var(--blue-50, #e3e9f6);
-    }
-
-    &:active:not(:disabled) {
-      background-color: var(--blue-100, #b3c2e6);
-    }
-  }
-
-  // ── Sizes ─────────────────────────────────────────────────────────────────
-
-  &--small {
-    padding: 0.375rem 0.875rem;
-    font-size: 0.75rem;
-  }
-
-  &--medium {
-    padding: 0.625rem 1.25rem;
-    font-size: var(--fs-button, 0.875rem);
-  }
-
-  &--large {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-  }
+// ── Secondary — outlined USLI Blue ────────────────────────────────────────
+.btn-usli-secondary {
+  --bs-btn-color:           var(--blue-500, #00338e);
+  --bs-btn-bg:              transparent;
+  --bs-btn-border-color:    var(--blue-500, #00338e);
+  --bs-btn-hover-color:     var(--blue-700, #00216a);
+  --bs-btn-hover-bg:        var(--blue-50, #e3e9f6);
+  --bs-btn-hover-border:    var(--blue-600, #002c7c);
+  --bs-btn-active-color:    var(--blue-700, #00216a);
+  --bs-btn-active-bg:       var(--blue-100, #b3c2e6);
+  --bs-btn-active-border:   var(--blue-700, #00216a);
+  --bs-btn-disabled-color:  var(--blue-300, #4d78c9);
+  --bs-btn-disabled-bg:     transparent;
+  --bs-btn-disabled-border: var(--blue-300, #4d78c9);
 }

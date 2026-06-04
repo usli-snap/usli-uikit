@@ -1,4 +1,6 @@
-// Shared styles for all documentation pages
+// Shared styles for all documentation pages.
+// Bootstrap is loaded globally — this file extends/overrides it.
+
 .page {
   padding: 2rem 3rem 4rem;
   max-width: 900px;
@@ -6,33 +8,34 @@
 
 .page-header {
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--bs-border-color, #dee2e6);
   margin-bottom: 2.5rem;
 }
 
+// Override Bootstrap's breadcrumb to match the docs aesthetic
 .breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  --bs-breadcrumb-divider: '/';
   font-size: 0.8rem;
-  color: #9e9e9e;
+  color: var(--bs-secondary-color, #6c757d);
   margin-bottom: 0.75rem;
+  padding: 0;
+  background: none;
 
-  &__sep { color: #bdbdbd; }
-  &__current { color: #616161; }
+  &__sep   { color: var(--bs-border-color, #dee2e6); }
+  &__current { color: var(--bs-secondary-color, #6c757d); }
 }
 
 .page-title {
   font-size: var(--fs-h2, 2.5rem);
   font-weight: var(--fw-light, 300);
-  color: #212121;
+  color: var(--bs-body-color, #212121);
   margin: 0 0 0.75rem;
   line-height: 1.15;
 }
 
 .page-lead {
   font-size: 1rem;
-  color: #616161;
+  color: var(--bs-secondary-color, #6c757d);
   line-height: 1.7;
   margin: 0;
   max-width: 72ch;
@@ -45,37 +48,33 @@
 .section__title {
   font-size: var(--fs-h4, 1.5rem);
   font-weight: var(--fw-regular, 400);
-  color: #212121;
+  color: var(--bs-body-color, #212121);
   margin: 0 0 1rem;
 }
 
 .section__desc {
   font-size: 0.9rem;
-  color: #616161;
+  color: var(--bs-secondary-color, #6c757d);
   margin: 0 0 1.25rem;
   line-height: 1.6;
 }
 
-.divider {
-  border: none;
-  border-top: 1px solid #e0e0e0;
-  margin: 2.5rem 0;
-}
-
+// Example preview box — sits above the code block
 .example-box {
   padding: 2rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 0.5rem 0.5rem 0 0;
-  background: #fafafa;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: var(--bs-border-radius, 0.375rem) var(--bs-border-radius, 0.375rem) 0 0;
+  background: var(--bs-tertiary-bg, #f8f9fa);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
 }
 
+// Dark code block — directly below example-box
 .code-block {
   background: #1e293b;
-  border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0 0 var(--bs-border-radius, 0.375rem) var(--bs-border-radius, 0.375rem);
   overflow: auto;
 
   pre {
@@ -86,57 +85,50 @@
   }
 
   code {
-    font-family: 'Roboto Mono', 'Fira Code', Consolas, monospace;
+    font-family: var(--bs-font-monospace, 'Roboto Mono', Consolas, monospace);
     color: #e2e8f0;
+    background: none;
+    padding: 0;
+    font-size: inherit;
   }
 
   &--standalone {
-    border-radius: 0.5rem;
+    border-radius: var(--bs-border-radius, 0.375rem);
   }
 }
 
+// API table — uses Bootstrap's table styles as a base
 .api-table {
-  width: 100%;
-  border-collapse: collapse;
+  @extend .table, .table-bordered, .table-sm !optional;
   font-size: 0.875rem;
 
-  th {
-    text-align: left;
-    padding: 0.625rem 1rem;
-    background: #f5f5f5;
-    border: 1px solid #e0e0e0;
+  thead th {
+    background: var(--bs-tertiary-bg, #f8f9fa);
+    font-size: 0.75rem;
     font-weight: 600;
-    color: #424242;
-    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    color: var(--bs-secondary-color, #6c757d);
+    vertical-align: middle;
   }
 
-  td {
-    padding: 0.625rem 1rem;
-    border: 1px solid #e0e0e0;
-    vertical-align: top;
-    color: #424242;
-    line-height: 1.5;
-  }
-
-  tr:nth-child(even) td { background: #fafafa; }
+  td { vertical-align: top; line-height: 1.5; }
 
   .prop-name {
-    font-family: 'Roboto Mono', Consolas, monospace;
+    font-family: var(--bs-font-monospace, Consolas, monospace);
     color: var(--blue-700, #00216a);
     font-size: 0.82rem;
   }
 
   .prop-type {
-    font-family: 'Roboto Mono', Consolas, monospace;
+    font-family: var(--bs-font-monospace, Consolas, monospace);
     color: #e67e22;
     font-size: 0.8rem;
   }
 
   .prop-default {
-    font-family: 'Roboto Mono', Consolas, monospace;
-    color: #9e9e9e;
+    font-family: var(--bs-font-monospace, Consolas, monospace);
+    color: var(--bs-secondary-color, #6c757d);
     font-size: 0.8rem;
   }
 }

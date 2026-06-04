@@ -27,7 +27,9 @@ export class UsliButtonComponent {
   clicked = output<MouseEvent>();
 
   protected classes = computed(() => {
-    const variant = this.primary() ? 'usli-button--primary' : 'usli-button--secondary';
-    return `usli-button usli-button--${this.size()} ${variant}`;
+    const variant  = this.primary() ? 'usli-button--primary btn-usli-primary' : 'usli-button--secondary btn-usli-secondary';
+    const sizeMap  = { small: 'btn-sm', medium: '', large: 'btn-lg' } as const;
+    const bsSize   = sizeMap[this.size()];
+    return `usli-button btn ${bsSize} ${variant}`.trim().replace(/\s+/g, ' ');
   });
 }
