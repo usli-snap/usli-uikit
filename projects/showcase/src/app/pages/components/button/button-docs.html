@@ -8,22 +8,45 @@
     </nav>
     <h1 class="page-title">Button</h1>
     <p class="page-lead">
-      Use buttons to trigger actions or navigate. Supports primary and secondary variants
-      in three sizes with full keyboard and disabled state support.
+      Use buttons to trigger actions or navigate. Supports primary, secondary, tertiary,
+      and semantic (error, warning, info, success) variants in three sizes with full
+      keyboard and disabled state support.
     </p>
   </header>
 
   <!-- Variants -->
   <section class="section">
     <h2 class="section__title">Variants</h2>
-    <p class="section__desc">Use <code>primary</code> for the main call-to-action. The default (secondary) is for supporting actions.</p>
+    <p class="section__desc">
+      Use the <code>variant</code> input to choose the visual style. <code>primary</code> is
+      the main call-to-action; <code>secondary</code> is for supporting actions;
+      <code>tertiary</code> is a ghost/text button. Semantic variants communicate intent.
+    </p>
+
+    <h3 class="section__subtitle">Base variants</h3>
     <div class="example-box">
-      <usli-button label="Primary" [primary]="true" />
-      <usli-button label="Secondary" />
+      <usli-button label="Primary"   variant="primary"   />
+      <usli-button label="Secondary" variant="secondary" />
+      <usli-button label="Tertiary"  variant="tertiary"  />
     </div>
     <div class="code-block">
-      <pre><code>&lt;usli-button label="Primary" [primary]="true" /&gt;
-&lt;usli-button label="Secondary" /&gt;</code></pre>
+      <pre><code>&lt;usli-button label="Primary"   variant="primary"   /&gt;
+&lt;usli-button label="Secondary" variant="secondary" /&gt;
+&lt;usli-button label="Tertiary"  variant="tertiary"  /&gt;</code></pre>
+    </div>
+
+    <h3 class="section__subtitle section__subtitle--spaced">Semantic variants</h3>
+    <div class="example-box">
+      <usli-button label="Error"   variant="error"   />
+      <usli-button label="Warning" variant="warning" />
+      <usli-button label="Info"    variant="info"    />
+      <usli-button label="Success" variant="success" />
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-button label="Error"   variant="error"   /&gt;
+&lt;usli-button label="Warning" variant="warning" /&gt;
+&lt;usli-button label="Info"    variant="info"    /&gt;
+&lt;usli-button label="Success" variant="success" /&gt;</code></pre>
     </div>
   </section>
 
@@ -127,7 +150,7 @@
       </tbody>
     </table>
 
-    <h3 class="api-subtitle" style="margin-top:1.5rem">Outputs</h3>
+    <h3 class="api-subtitle api-subtitle--spaced">Outputs</h3>
     <table class="api-table">
       <thead>
         <tr><th>Name</th><th>Type</th><th>Description</th></tr>

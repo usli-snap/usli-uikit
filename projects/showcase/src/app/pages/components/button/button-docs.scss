@@ -1,10 +1,25 @@
 @use '../../docs-page';
 
+.section__subtitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #424242;
+  margin: 0 0 0.75rem;
+
+  &--spaced {
+    margin-top: 1.5rem;
+  }
+}
+
 .api-subtitle {
   font-size: 1rem;
   font-weight: 600;
   color: #424242;
   margin: 0 0 0.75rem;
+
+  &--spaced {
+    margin-top: 1.5rem;
+  }
 }
 
 code {
