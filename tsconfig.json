@@ -15,7 +15,7 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
-      "ui-sdk": ["./dist/ui-sdk"]
+      "ui-sdk": ["./projects/ui-sdk/src/public-api.ts"]
     }
   },
   "angularCompilerOptions": {

@@ -1,0 +1,36 @@
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
+interface NavItem { label: string; path: string; exact?: boolean; }
+interface NavSection { title: string; items: NavItem[]; }
+
+@Component({
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
+  templateUrl: './sidebar.html',
+  styleUrl: './sidebar.scss',
+})
+export class Sidebar {
+  sections: NavSection[] = [
+    {
+      title: 'Getting Started',
+      items: [
+        { label: 'Introduction', path: '/', exact: true },
+      ],
+    },
+    {
+      title: 'Components',
+      items: [
+        { label: 'Button', path: '/components/button' },
+      ],
+    },
+    {
+      title: 'Design System',
+      items: [
+        { label: 'Colors',      path: '/design/colors' },
+        { label: 'Typography',  path: '/design/typography' },
+      ],
+    },
+  ];
+}

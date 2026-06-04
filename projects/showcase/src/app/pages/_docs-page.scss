@@ -1,0 +1,142 @@
+// Shared styles for all documentation pages
+.page {
+  padding: 2rem 3rem 4rem;
+  max-width: 900px;
+}
+
+.page-header {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 2.5rem;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #9e9e9e;
+  margin-bottom: 0.75rem;
+
+  &__sep { color: #bdbdbd; }
+  &__current { color: #616161; }
+}
+
+.page-title {
+  font-size: var(--fs-h2, 2.5rem);
+  font-weight: var(--fw-light, 300);
+  color: #212121;
+  margin: 0 0 0.75rem;
+  line-height: 1.15;
+}
+
+.page-lead {
+  font-size: 1rem;
+  color: #616161;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 72ch;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section__title {
+  font-size: var(--fs-h4, 1.5rem);
+  font-weight: var(--fw-regular, 400);
+  color: #212121;
+  margin: 0 0 1rem;
+}
+
+.section__desc {
+  font-size: 0.9rem;
+  color: #616161;
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 2.5rem 0;
+}
+
+.example-box {
+  padding: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: #fafafa;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.code-block {
+  background: #1e293b;
+  border-radius: 0 0 0.5rem 0.5rem;
+  overflow: auto;
+
+  pre {
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+
+  code {
+    font-family: 'Roboto Mono', 'Fira Code', Consolas, monospace;
+    color: #e2e8f0;
+  }
+
+  &--standalone {
+    border-radius: 0.5rem;
+  }
+}
+
+.api-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+
+  th {
+    text-align: left;
+    padding: 0.625rem 1rem;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    font-weight: 600;
+    color: #424242;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  td {
+    padding: 0.625rem 1rem;
+    border: 1px solid #e0e0e0;
+    vertical-align: top;
+    color: #424242;
+    line-height: 1.5;
+  }
+
+  tr:nth-child(even) td { background: #fafafa; }
+
+  .prop-name {
+    font-family: 'Roboto Mono', Consolas, monospace;
+    color: var(--blue-700, #00216a);
+    font-size: 0.82rem;
+  }
+
+  .prop-type {
+    font-family: 'Roboto Mono', Consolas, monospace;
+    color: #e67e22;
+    font-size: 0.8rem;
+  }
+
+  .prop-default {
+    font-family: 'Roboto Mono', Consolas, monospace;
+    color: #9e9e9e;
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,46 @@
+@use '../../docs-page';
+
+.swatches {
+  display: flex;
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+.accents {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.swatch {
+  flex: 1;
+  min-height: 80px;
+  padding: 0.625rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.accent {
+  flex: 1;
+  min-height: 60px;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+.swatch__key {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.swatch__hex {
+  font-size: 10px;
+  opacity: 0.85;
+  font-family: 'Roboto Mono', Consolas, monospace;
+}

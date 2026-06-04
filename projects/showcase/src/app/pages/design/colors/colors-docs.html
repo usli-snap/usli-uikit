@@ -1,0 +1,36 @@
+<div class="page">
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Design System</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Colors</span>
+    </nav>
+    <h1 class="page-title">Colors</h1>
+    <p class="page-lead">
+      The USLI color palette provides seven semantic palettes, each with ten shades (50–900) and
+      four accent variants. All values are available as CSS custom properties.
+    </p>
+  </header>
+
+  @for (palette of palettes; track palette.name) {
+    <section class="section">
+      <h2 class="section__title">{{ palette.name }}</h2>
+      <div class="swatches">
+        @for (shade of palette.shades; track shade.key) {
+          <div class="swatch" [style.background]="shade.hex" [style.color]="shade.darkText ? '#212121' : '#fff'">
+            <span class="swatch__key">{{ shade.key }}</span>
+            <span class="swatch__hex">{{ shade.hex }}</span>
+          </div>
+        }
+      </div>
+      <div class="accents">
+        @for (shade of palette.accents; track shade.key) {
+          <div class="accent" [style.background]="shade.hex" [style.color]="shade.darkText ? '#212121' : '#fff'">
+            <span class="swatch__key">{{ shade.key }}</span>
+            <span class="swatch__hex">{{ shade.hex }}</span>
+          </div>
+        }
+      </div>
+    </section>
+  }
+</div>

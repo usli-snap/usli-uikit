@@ -1,0 +1,80 @@
+<div class="page">
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Design System</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Typography</span>
+    </nav>
+    <h1 class="page-title">Typography</h1>
+    <p class="page-lead">
+      The USLI type scale uses Roboto and Open Sans from Google Fonts. 1rem = 16px throughout.
+      All sizes and weights are available as CSS custom properties.
+    </p>
+  </header>
+
+  <!-- Roboto -->
+  <section class="section">
+    <h2 class="section__title">Roboto</h2>
+    <div class="type-table">
+      @for (row of rows; track row.label) {
+        <div class="type-row" [class.type-row--divider]="row.divider">
+          <span class="type-label">{{ row.label }}</span>
+          <span class="type-sample"
+            style="font-family: 'Roboto', sans-serif"
+            [style.font-size]="row.fontSize"
+            [style.font-weight]="row.robotoWeight"
+            [style.text-transform]="row.transform || 'none'"
+            [style.letter-spacing]="row.spacing || 'normal'"
+          >{{ row.sample }}</span>
+          <span class="type-spec">{{ row.robotoSpec }}</span>
+        </div>
+      }
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Open Sans -->
+  <section class="section">
+    <h2 class="section__title">Open Sans</h2>
+    <div class="type-table">
+      @for (row of rows; track row.label) {
+        <div class="type-row" [class.type-row--divider]="row.divider">
+          <span class="type-label">{{ row.label }}</span>
+          <span class="type-sample"
+            style="font-family: 'Open Sans', sans-serif"
+            [style.font-size]="row.fontSize"
+            [style.font-weight]="row.openSansWeight"
+            [style.text-transform]="row.transform || 'none'"
+            [style.letter-spacing]="row.spacing || 'normal'"
+          >{{ row.sample }}</span>
+          <span class="type-spec">{{ row.openSansSpec }}</span>
+        </div>
+      }
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CSS Variables reference -->
+  <section class="section">
+    <h2 class="section__title">CSS Custom Properties</h2>
+    <p class="section__desc">Reference these tokens in your component stylesheets.</p>
+    <div class="code-block code-block--standalone">
+      <pre><code>/* Font families */
+--font-roboto:     'Roboto', sans-serif;
+--font-open-sans:  'Open Sans', sans-serif;
+
+/* Font weights */
+--fw-light:     300;   --fw-regular:   400;
+--fw-medium:    500;   --fw-semibold:  600;
+--fw-bold:      700;   --fw-black:     900;
+
+/* Type scale */
+--fs-h1: 3rem;        --fs-h2: 2.5rem;    --fs-h3: 2rem;
+--fs-h4: 1.5rem;      --fs-h5: 1.25rem;   --fs-h6: 1rem;
+--fs-body-1: 1rem;    --fs-body-2: 0.875rem;
+--fs-caption: 0.75rem; --fs-overline: 0.625rem;</code></pre>
+    </div>
+  </section>
+</div>

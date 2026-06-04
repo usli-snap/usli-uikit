@@ -1,0 +1,145 @@
+<div class="page">
+
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Components</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Button</span>
+    </nav>
+    <h1 class="page-title">Button</h1>
+    <p class="page-lead">
+      Use buttons to trigger actions or navigate. Supports primary and secondary variants
+      in three sizes with full keyboard and disabled state support.
+    </p>
+  </header>
+
+  <!-- Variants -->
+  <section class="section">
+    <h2 class="section__title">Variants</h2>
+    <p class="section__desc">Use <code>primary</code> for the main call-to-action. The default (secondary) is for supporting actions.</p>
+    <div class="example-box">
+      <usli-button label="Primary" [primary]="true" />
+      <usli-button label="Secondary" />
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-button label="Primary" [primary]="true" /&gt;
+&lt;usli-button label="Secondary" /&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Sizes -->
+  <section class="section">
+    <h2 class="section__title">Sizes</h2>
+    <p class="section__desc">Three sizes: <code>small</code>, <code>medium</code> (default), and <code>large</code>.</p>
+    <div class="example-box">
+      <usli-button label="Small"  [primary]="true" size="small"  />
+      <usli-button label="Medium" [primary]="true" size="medium" />
+      <usli-button label="Large"  [primary]="true" size="large"  />
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-button label="Small"  [primary]="true" size="small"  /&gt;
+&lt;usli-button label="Medium" [primary]="true" size="medium" /&gt;
+&lt;usli-button label="Large"  [primary]="true" size="large"  /&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Disabled -->
+  <section class="section">
+    <h2 class="section__title">Disabled state</h2>
+    <p class="section__desc">Add <code>[disabled]="true"</code> to prevent interaction. Works on both variants.</p>
+    <div class="example-box">
+      <usli-button label="Primary"   [primary]="true"  [disabled]="true" />
+      <usli-button label="Secondary" [primary]="false" [disabled]="true" />
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-button label="Primary"   [primary]="true"  [disabled]="true" /&gt;
+&lt;usli-button label="Secondary" [primary]="false" [disabled]="true" /&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Content projection -->
+  <section class="section">
+    <h2 class="section__title">Content projection</h2>
+    <p class="section__desc">Pass content as children instead of the <code>label</code> input for richer markup.</p>
+    <div class="example-box">
+      <usli-button [primary]="true">Save changes</usli-button>
+      <usli-button>Cancel</usli-button>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-button [primary]="true"&gt;Save changes&lt;/usli-button&gt;
+&lt;usli-button&gt;Cancel&lt;/usli-button&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- API -->
+  <section class="section">
+    <h2 class="section__title">API</h2>
+
+    <h3 class="api-subtitle">Inputs</h3>
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">primary</span></td>
+          <td><span class="prop-type">boolean</span></td>
+          <td><span class="prop-default">false</span></td>
+          <td>Filled (primary) vs outlined (secondary) variant.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">size</span></td>
+          <td><span class="prop-type">'small' | 'medium' | 'large'</span></td>
+          <td><span class="prop-default">'medium'</span></td>
+          <td>Controls padding and font size.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">label</span></td>
+          <td><span class="prop-type">string</span></td>
+          <td><span class="prop-default">'Button'</span></td>
+          <td>Text label. Overridden by projected content.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">disabled</span></td>
+          <td><span class="prop-type">boolean</span></td>
+          <td><span class="prop-default">false</span></td>
+          <td>Disables the button and blocks pointer events.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">backgroundColor</span></td>
+          <td><span class="prop-type">string | undefined</span></td>
+          <td><span class="prop-default">undefined</span></td>
+          <td>Optional inline background-color override.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="api-subtitle" style="margin-top:1.5rem">Outputs</h3>
+    <table class="api-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">clicked</span></td>
+          <td><span class="prop-type">OutputEmitterRef&lt;MouseEvent&gt;</span></td>
+          <td>Emits the native MouseEvent on click.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

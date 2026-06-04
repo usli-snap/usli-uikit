@@ -1,0 +1,71 @@
+<div class="page">
+
+  <div class="hero">
+    <span class="hero__badge">Design System</span>
+    <h1 class="hero__title">USLI UI SDK</h1>
+    <p class="hero__subtitle">
+      A component library built with Angular for USLI applications.
+      Consistent, accessible, and aligned with the USLI brand.
+    </p>
+    <div class="hero__actions">
+      <a routerLink="/components/button" class="btn btn--primary">Browse Components</a>
+      <a routerLink="/design/colors" class="btn btn--secondary">Design Tokens</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <h2 class="section__title">Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-card__icon">&#9679;</div>
+        <h3 class="feature-card__title">Angular 21</h3>
+        <p class="feature-card__desc">Built with standalone components and signals. No NgModules required.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">&#9632;</div>
+        <h3 class="feature-card__title">USLI Branded</h3>
+        <p class="feature-card__desc">Colors, typography, and spacing aligned with the USLI design language.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">&#9650;</div>
+        <h3 class="feature-card__title">Design Tokens</h3>
+        <p class="feature-card__desc">CSS custom properties for colors and typography — theme once, apply everywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <h2 class="section__title">Quick Start</h2>
+    <p class="section__lead">Import any component directly from the library.</p>
+    <div class="code-block">
+      <pre><code>import &#123; UsliButtonComponent &#125; from 'ui-sdk';
+
+&#64;Component(&#123;
+  imports: [UsliButtonComponent],
+  template: `&lt;usli-button label="Save" [primary]="true" /&gt;`
+&#125;)
+export class MyComponent &#123;&#125;</code></pre>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <h2 class="section__title">Resources</h2>
+    <div class="resource-grid">
+      <a class="resource-card" href="../storybook/" target="_blank" rel="noopener">
+        <h3 class="resource-card__title">Storybook ↗</h3>
+        <p class="resource-card__desc">Interactive component playground with controls and docs.</p>
+      </a>
+      <a class="resource-card" href="../compodoc/" target="_blank" rel="noopener">
+        <h3 class="resource-card__title">Compodoc ↗</h3>
+        <p class="resource-card__desc">Auto-generated API reference from TypeScript source.</p>
+      </a>
+    </div>
+  </section>
+
+</div>

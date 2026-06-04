@@ -3,3 +3,4 @@
  */
 
 export * from './lib/ui-sdk';
+export * from './lib/components';
