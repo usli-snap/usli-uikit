@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/components/button/button-docs').then(m => m.ButtonDocs),
   },
   {
+    path: 'components/badge',
+    loadComponent: () => import('./pages/components/badge/badge-docs').then(m => m.BadgeDocs),
+  },
+  {
     path: 'design/colors',
     loadComponent: () => import('./pages/design/colors/colors-docs').then(m => m.ColorsDocs),
   },

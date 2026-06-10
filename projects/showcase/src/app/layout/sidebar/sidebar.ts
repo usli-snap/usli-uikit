@@ -23,6 +23,7 @@ export class Sidebar {
       title: 'Components',
       items: [
         { label: 'Button', path: '/components/button' },
+        { label: 'Badge',  path: '/components/badge' },
       ],
     },
     {
