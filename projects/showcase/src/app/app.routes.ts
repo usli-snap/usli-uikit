@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/components/alert/alert-docs').then(m => m.AlertDocs),
   },
   {
+    path: 'components/card',
+    loadComponent: () => import('./pages/components/card/card-docs').then(m => m.CardDocs),
+  },
+  {
     path: 'design/colors',
     loadComponent: () => import('./pages/design/colors/colors-docs').then(m => m.ColorsDocs),
   },
