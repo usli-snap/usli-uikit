@@ -24,6 +24,7 @@ export class Sidebar {
       items: [
         { label: 'Button', path: '/components/button' },
         { label: 'Badge',  path: '/components/badge' },
+        { label: 'Alert',  path: '/components/alert' },
       ],
     },
     {
