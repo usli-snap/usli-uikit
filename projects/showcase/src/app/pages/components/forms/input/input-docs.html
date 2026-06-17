@@ -17,38 +17,47 @@
     <div class="example">
       <h3>Email Validation</h3>
       <div class="demo-box">
+        <label>Email Address</label>
         <usli-input
           type="email"
-          placeholder="Enter your email">
+          placeholder="Enter your email"
+          [formControl]="$any(form.get('email'))">
         </usli-input>
       </div>
       <pre><code>&lt;usli-input
   type="email"
-  placeholder="Enter your email"&gt;
+  placeholder="Enter your email"
+  [formControl]="emailControl"&gt;
 &lt;/usli-input&gt;</code></pre>
     </div>
 
     <div class="example">
       <h3>Required Field</h3>
       <div class="demo-box">
+        <label>Name (Required)</label>
         <usli-input
-          placeholder="This field is required">
+          placeholder="This field is required"
+          [formControl]="$any(form.get('required'))">
         </usli-input>
       </div>
       <pre><code>&lt;usli-input
-  placeholder="This field is required"&gt;
+  placeholder="This field is required"
+  [formControl]="requiredControl"&gt;
 &lt;/usli-input&gt;</code></pre>
     </div>
 
     <div class="example">
       <h3>Min/Max Length</h3>
       <div class="demo-box">
+        <label>Username (3-20 characters)</label>
         <usli-input
-          placeholder="Enter 3-20 characters">
+          placeholder="Enter 3-20 characters"
+          [formControl]="$any(form.get('minmax'))">
         </usli-input>
       </div>
       <pre><code>&lt;usli-input
-  placeholder="Enter 3-20 characters"&gt;
+  placeholder="Enter 3-20 characters"
+  [formControl]="lengthControl"&gt;
 &lt;/usli-input&gt;</code></pre>
     </div>
   </section>
@@ -60,24 +69,30 @@
     <div class="example">
       <h3>FormGroup Integration</h3>
       <div class="demo-box">
+        <label>Form-Bound Input</label>
         <usli-input
-          placeholder="Bound to FormControl">
+          placeholder="Bound to FormControl"
+          [formControl]="$any(form.get('formBound'))">
         </usli-input>
       </div>
       <pre><code>&lt;usli-input
-  placeholder="Bound to FormControl"&gt;
+  placeholder="Bound to FormControl"
+  [formControl]="formControl"&gt;
 &lt;/usli-input&gt;</code></pre>
     </div>
 
     <div class="example">
       <h3>Two-Way Binding</h3>
       <div class="demo-box">
+        <label>Value: {{ form.get('twoWay')?.value || 'empty' }}</label>
         <usli-input
-          placeholder="Type to see value update">
+          placeholder="Type to see value update"
+          [formControl]="$any(form.get('twoWay'))">
         </usli-input>
       </div>
       <pre><code>&lt;usli-input
-  placeholder="Type to see value update"&gt;
+  placeholder="Type to see value update"
+  [formControl]="twoWayControl"&gt;
 &lt;/usli-input&gt;</code></pre>
     </div>
   </section>
@@ -89,15 +104,21 @@
     <div class="example">
       <h3>Validation Error Display</h3>
       <div class="demo-box">
+        <label>Email with Error</label>
         <usli-input
           type="email"
           placeholder="Invalid email will show error"
+          [formControl]="$any(form.get('errorEmail'))"
           errorMessage="Please enter a valid email address">
         </usli-input>
+        <p *ngIf="form.get('errorEmail')?.invalid && form.get('errorEmail')?.touched" class="error-text">
+          Please enter a valid email address
+        </p>
       </div>
       <pre><code>&lt;usli-input
   type="email"
   placeholder="Invalid email will show error"
+  [formControl]="errorControl"
   errorMessage="Please enter a valid email address"&gt;
 &lt;/usli-input&gt;</code></pre>
     </div>
@@ -105,14 +126,15 @@
     <div class="example">
       <h3>Disabled State</h3>
       <div class="demo-box">
+        <label>Disabled Field</label>
         <usli-input
           placeholder="This field is disabled"
-          disabled="true">
+          [formControl]="$any(form.get('disabled'))">
         </usli-input>
       </div>
       <pre><code>&lt;usli-input
   placeholder="This field is disabled"
-  disabled="true"&gt;
+  [disabled]="true"&gt;
 &lt;/usli-input&gt;</code></pre>
     </div>
   </section>
