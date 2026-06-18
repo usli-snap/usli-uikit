@@ -132,7 +132,7 @@
       </form>
     </div>
     <div class="code-block">
-      <pre><code>&lt;label *ngFor="let control of controls; let i = index"&gt;
+      <pre><code ngNonBindable>&lt;label *ngFor="let control of controls; let i = index"&gt;
   &lt;usli-checkbox [formControl]="control"&gt;&lt;/usli-checkbox&gt;
   {{ permissions[i] }}
 &lt;/label&gt;</code></pre>
