@@ -1,12 +1,14 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { UsliTextareaComponent } from './usli-textarea.component';
+
+const IMPORTS = [ReactiveFormsModule];
 
 const meta: Meta<UsliTextareaComponent> = {
   component: UsliTextareaComponent,
   title: 'Form Components/Textarea',
   tags: ['autodocs'],
-  imports: [ReactiveFormsModule],
+  decorators: [moduleMetadata({ imports: IMPORTS })],
 };
 
 export default meta;
@@ -43,7 +45,7 @@ export const WithLabel: Story = {
         />
       </usli-form-field>
     `,
-    imports: [...(meta.imports || [])],
+    imports: [...IMPORTS],
   }),
 };
 
@@ -62,7 +64,7 @@ export const WithValidation: Story = {
         />
       </usli-form-field>
     `,
-    imports: [...(meta.imports || [])],
+    imports: [...IMPORTS],
   }),
 };
 
@@ -81,7 +83,7 @@ export const LargeTextarea: Story = {
         />
       </usli-form-field>
     `,
-    imports: [...(meta.imports || [])],
+    imports: [...IMPORTS],
   }),
 };
 

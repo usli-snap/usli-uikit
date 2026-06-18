@@ -1,12 +1,14 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { UsliInputComponent } from './usli-input.component';
+
+const IMPORTS = [ReactiveFormsModule];
 
 const meta: Meta<UsliInputComponent> = {
   component: UsliInputComponent,
   title: 'Form Components/Input',
   tags: ['autodocs'],
-  imports: [ReactiveFormsModule],
+  decorators: [moduleMetadata({ imports: IMPORTS })],
 };
 
 export default meta;
@@ -43,7 +45,7 @@ export const WithLabel: Story = {
         />
       </usli-form-field>
     `,
-    imports: [...(meta.imports || [])],
+    imports: [...IMPORTS],
   }),
 };
 
@@ -62,7 +64,7 @@ export const WithValidation: Story = {
         />
       </usli-form-field>
     `,
-    imports: [...(meta.imports || [])],
+    imports: [...IMPORTS],
   }),
 };
 
@@ -96,7 +98,7 @@ export const Password: Story = {
         />
       </usli-form-field>
     `,
-    imports: [...(meta.imports || [])],
+    imports: [...IMPORTS],
   }),
 };
 
@@ -115,6 +117,6 @@ export const Number: Story = {
         />
       </usli-form-field>
     `,
-    imports: [...(meta.imports || [])],
+    imports: [...IMPORTS],
   }),
 };
