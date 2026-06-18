@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-interface NavItem { label: string; path: string; exact?: boolean; }
+interface NavItem { label: string; path?: string; exact?: boolean; items?: NavItem[]; }
 interface NavSection { title: string; items: NavItem[]; }
 
 @Component({
@@ -27,6 +27,17 @@ export class Sidebar {
         { label: 'Alert',   path: '/components/alert' },
         { label: 'Card',    path: '/components/card' },
         { label: 'Spinner', path: '/components/spinner' },
+        {
+          label: 'Form Elements',
+          items: [
+            { label: 'Input',    path: '/components/forms/input' },
+            { label: 'Textarea', path: '/components/forms/textarea' },
+            { label: 'Select',   path: '/components/forms/select' },
+            { label: 'Checkbox', path: '/components/forms/checkbox' },
+            { label: 'Radio Group', path: '/components/forms/radio-group' },
+            { label: 'Form Field', path: '/components/forms/form-field' },
+          ],
+        },
       ],
     },
     {
@@ -34,27 +45,6 @@ export class Sidebar {
       items: [
         { label: 'Colors',      path: '/design/colors' },
         { label: 'Typography',  path: '/design/typography' },
-      ],
-    },
-    {
-      title: 'Inputs',
-      items: [
-        { label: 'Input',    path: '/components/forms/input' },
-        { label: 'Textarea', path: '/components/forms/textarea' },
-      ],
-    },
-    {
-      title: 'Selection',
-      items: [
-        { label: 'Select',      path: '/components/forms/select' },
-        { label: 'Checkbox',    path: '/components/forms/checkbox' },
-        { label: 'Radio Group', path: '/components/forms/radio-group' },
-      ],
-    },
-    {
-      title: 'Containers',
-      items: [
-        { label: 'Form Field', path: '/components/forms/form-field' },
       ],
     },
   ];

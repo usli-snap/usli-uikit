@@ -3,14 +3,32 @@
     <div class="sidebar__section">
       <p class="sidebar__heading">{{ section.title }}</p>
       <ul class="sidebar__list">
-        @for (item of section.items; track item.path) {
+        @for (item of section.items; track item.label) {
           <li>
-            <a
-              class="sidebar__link"
-              [routerLink]="item.path"
-              routerLinkActive="sidebar__link--active"
-              [routerLinkActiveOptions]="{ exact: !!item.exact }"
-            >{{ item.label }}</a>
+            @if (item.path) {
+              <a
+                class="sidebar__link"
+                [routerLink]="item.path"
+                routerLinkActive="sidebar__link--active"
+                [routerLinkActiveOptions]="{ exact: !!item.exact }"
+              >{{ item.label }}</a>
+            } @else {
+              <span class="sidebar__link sidebar__link--group">{{ item.label }}</span>
+            }
+            @if (item.items && item.items.length > 0) {
+              <ul class="sidebar__sublist">
+                @for (subitem of item.items; track subitem.path) {
+                  <li>
+                    <a
+                      class="sidebar__link sidebar__link--sub"
+                      [routerLink]="subitem.path"
+                      routerLinkActive="sidebar__link--active"
+                      [routerLinkActiveOptions]="{ exact: !!subitem.exact }"
+                    >{{ subitem.label }}</a>
+                  </li>
+                }
+              </ul>
+            }
           </li>
         }
       </ul>
