@@ -1,12 +1,14 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { UsliSelectComponent } from './usli-select.component';
+
+const IMPORTS = [ReactiveFormsModule];
 
 const meta: Meta<UsliSelectComponent> = {
   component: UsliSelectComponent,
   title: 'Form Components/Select',
   tags: ['autodocs'],
-  imports: [ReactiveFormsModule],
+  decorators: [moduleMetadata({ imports: IMPORTS })],
 };
 
 export default meta;
@@ -45,7 +47,7 @@ export const WithLabel: Story = {
         </usli-select>
       </usli-form-field>
     `,
-    imports: [...(meta.imports || [])],
+    imports: [...IMPORTS],
   }),
 };
 
@@ -65,7 +67,7 @@ export const WithValidation: Story = {
         </usli-select>
       </usli-form-field>
     `,
-    imports: [...(meta.imports || [])],
+    imports: [...IMPORTS],
   }),
 };
 
@@ -100,6 +102,6 @@ export const Multiple: Story = {
         </usli-select>
       </usli-form-field>
     `,
-    imports: [...(meta.imports || [])],
+    imports: [...IMPORTS],
   }),
 };
