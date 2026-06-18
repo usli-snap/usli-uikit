@@ -1,184 +1,255 @@
-<div class="app-docs-container">
-  <div class="breadcrumb">
-    <a href="/">Home</a> / <a href="/components">Components</a> /
-    <a href="/components/selection">Selection</a> / <strong>Radio Group</strong>
-  </div>
+<div class="page">
 
-  <h1>Radio Group Component</h1>
-  <p class="component-description">
-    A set of radio buttons for selecting a single option from multiple choices with reactive forms support.
-  </p>
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Components</span>
+      <span class="breadcrumb__sep">/</span>
+      <span>Form Elements</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Radio Group</span>
+    </nav>
+    <h1 class="page-title">Radio Group</h1>
+    <p class="page-lead">
+      A set of radio buttons for selecting a single option from multiple choices with reactive forms support.
+    </p>
+  </header>
 
-  <!-- Validation Examples Section -->
-  <section class="docs-section">
-    <h2>Validation Examples</h2>
+  <section class="section">
+    <h2 class="section__title">Validation Examples</h2>
+    <p class="section__desc">The Radio Group component supports reactive forms validation with required field checking.</p>
 
-    <article class="example">
-      <h3>Required Selection</h3>
-      <p>A radio group that requires a selection before form submission.</p>
-      <div class="example-preview">
-        <form [formGroup]="radioForm">
-          <usli-radio-group [formControl]="selectionControl">
-            <legend>Select an option (required):</legend>
-            <usli-radio
-              *ngFor="let option of radioOptions"
-              [value]="option.value"
-              [label]="option.label"
-            ></usli-radio>
-          </usli-radio-group>
-          <p class="error-message" *ngIf="selectionControl.invalid && selectionControl.touched">
-            Please select an option
-          </p>
-        </form>
-      </div>
-      <pre><code>{{ selectionControl.value | json }}</code></pre>
-    </article>
+    <h3 class="section__subtitle">Required Selection</h3>
+    <div class="example-box">
+      <form [formGroup]="radioForm">
+        <usli-radio-group [formControl]="selectionControl">
+          <legend>Select an option (required):</legend>
+          <usli-radio
+            *ngFor="let option of radioOptions"
+            [value]="option.value"
+            [label]="option.label"
+          ></usli-radio>
+        </usli-radio-group>
+        <p class="error-message" *ngIf="selectionControl.invalid && selectionControl.touched">
+          Please select an option
+        </p>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-radio-group [formControl]="control"&gt;
+  &lt;legend&gt;Select an option:&lt;/legend&gt;
+  &lt;usli-radio
+    *ngFor="let option of options"
+    [value]="option.value"
+    [label]="option.label"
+  &gt;&lt;/usli-radio&gt;
+&lt;/usli-radio-group&gt;</code></pre>
+    </div>
 
-    <article class="example">
-      <h3>Default Selected</h3>
-      <p>A radio group with a default selected option.</p>
-      <div class="example-preview">
-        <form [formGroup]="radioForm">
-          <usli-radio-group [formControl]="preferenceControl">
-            <legend>Select your preference:</legend>
-            <usli-radio
-              *ngFor="let option of radioOptions"
-              [value]="option.value"
-              [label]="option.label"
-            ></usli-radio>
-          </usli-radio-group>
-        </form>
-      </div>
-      <pre><code>{{ preferenceControl.value | json }}</code></pre>
-    </article>
+    <h3 class="section__subtitle section__subtitle--spaced">Default Selected</h3>
+    <div class="example-box">
+      <form [formGroup]="radioForm">
+        <usli-radio-group [formControl]="preferenceControl">
+          <legend>Select your preference:</legend>
+          <usli-radio
+            *ngFor="let option of radioOptions"
+            [value]="option.value"
+            [label]="option.label"
+          ></usli-radio>
+        </usli-radio-group>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-radio-group [formControl]="control"&gt;
+  &lt;legend&gt;Select your preference:&lt;/legend&gt;
+  &lt;usli-radio
+    *ngFor="let option of options"
+    [value]="option.value"
+    [label]="option.label"
+  &gt;&lt;/usli-radio&gt;
+&lt;/usli-radio-group&gt;</code></pre>
+    </div>
 
-    <article class="example">
-      <h3>Disabled Radio</h3>
-      <p>Individual radio buttons can be disabled.</p>
-      <div class="example-preview">
-        <form [formGroup]="radioForm">
-          <usli-radio-group [formControl]="preferenceControl">
-            <legend>Select an option:</legend>
-            <usli-radio
-              *ngFor="let option of radioOptions"
-              [value]="option.value"
-              [label]="option.label"
-            ></usli-radio>
-          </usli-radio-group>
-          <p class="note" *ngIf="true">(Note: Option 3 can be disabled at the form control level)</p>
-        </form>
-      </div>
-    </article>
+    <h3 class="section__subtitle section__subtitle--spaced">Disabled Radio</h3>
+    <div class="example-box">
+      <form [formGroup]="radioForm">
+        <usli-radio-group [formControl]="preferenceControl">
+          <legend>Select an option:</legend>
+          <usli-radio
+            *ngFor="let option of radioOptions"
+            [value]="option.value"
+            [label]="option.label"
+          ></usli-radio>
+        </usli-radio-group>
+        <p class="note">(Note: Individual options can be disabled at the form control level)</p>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-radio-group [formControl]="control"&gt;
+  &lt;legend&gt;Select an option:&lt;/legend&gt;
+  &lt;usli-radio
+    [value]="option.value"
+    [label]="option.label"
+  &gt;&lt;/usli-radio&gt;
+&lt;/usli-radio-group&gt;</code></pre>
+    </div>
   </section>
 
-  <!-- Form Integration Patterns Section -->
-  <section class="docs-section">
-    <h2>Form Integration Patterns</h2>
+  <hr class="divider" />
 
-    <article class="example">
-      <h3>Radio Group in FormGroup</h3>
-      <p>Using radio buttons as part of a larger form.</p>
-      <div class="example-preview">
-        <form [formGroup]="radioForm">
-          <usli-radio-group [formControl]="selectionControl">
-            <legend>Make a selection:</legend>
-            <usli-radio
-              *ngFor="let option of radioOptions"
-              [value]="option.value"
-              [label]="option.label"
-            ></usli-radio>
-          </usli-radio-group>
-        </form>
-      </div>
-      <pre><code>{{ radioForm.value | json }}</code></pre>
-    </article>
+  <section class="section">
+    <h2 class="section__title">Form Integration Patterns</h2>
+    <p class="section__desc">Integrate radio groups with Angular Reactive Forms for advanced form management.</p>
 
-    <article class="example">
-      <h3>Dynamic Options from Data</h3>
-      <p>Radio options populated from a data source.</p>
-      <div class="example-preview">
-        <form [formGroup]="radioForm">
-          <usli-radio-group [formControl]="preferenceControl">
-            <legend>Choose from available options:</legend>
-            <usli-radio
-              *ngFor="let option of radioOptions"
-              [value]="option.value"
-              [label]="option.label"
-            ></usli-radio>
-          </usli-radio-group>
-        </form>
-      </div>
-    </article>
+    <h3 class="section__subtitle">Radio Group in FormGroup</h3>
+    <div class="example-box">
+      <form [formGroup]="radioForm">
+        <usli-radio-group [formControl]="selectionControl">
+          <legend>Make a selection:</legend>
+          <usli-radio
+            *ngFor="let option of radioOptions"
+            [value]="option.value"
+            [label]="option.label"
+          ></usli-radio>
+        </usli-radio-group>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;form [formGroup]="form"&gt;
+  &lt;usli-radio-group [formControl]="control"&gt;
+    &lt;legend&gt;Make a selection:&lt;/legend&gt;
+    &lt;usli-radio
+      *ngFor="let option of options"
+      [value]="option.value"
+      [label]="option.label"
+    &gt;&lt;/usli-radio&gt;
+  &lt;/usli-radio-group&gt;
+&lt;/form&gt;</code></pre>
+    </div>
 
-    <article class="example">
-      <h3>Conditional Display Based on Selection</h3>
-      <p>Show/hide form sections based on radio selection.</p>
-      <div class="example-preview">
-        <form [formGroup]="radioForm">
-          <usli-radio-group [formControl]="preferenceControl">
-            <legend>Select option:</legend>
-            <usli-radio
-              *ngFor="let option of radioOptions"
-              [value]="option.value"
-              [label]="option.label"
-            ></usli-radio>
-          </usli-radio-group>
+    <h3 class="section__subtitle section__subtitle--spaced">Dynamic Options from Data</h3>
+    <div class="example-box">
+      <form [formGroup]="radioForm">
+        <usli-radio-group [formControl]="preferenceControl">
+          <legend>Choose from available options:</legend>
+          <usli-radio
+            *ngFor="let option of radioOptions"
+            [value]="option.value"
+            [label]="option.label"
+          ></usli-radio>
+        </usli-radio-group>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-radio-group [formControl]="control"&gt;
+  &lt;legend&gt;Choose from available options:&lt;/legend&gt;
+  &lt;usli-radio
+    *ngFor="let option of options"
+    [value]="option.value"
+    [label]="option.label"
+  &gt;&lt;/usli-radio&gt;
+&lt;/usli-radio-group&gt;</code></pre>
+    </div>
 
-          <div *ngIf="preferenceControl.value === 'option2'" class="conditional-section">
-            <p>Additional options for Option 2 appear here</p>
-          </div>
-        </form>
-      </div>
-      <pre><code>{{ preferenceControl.value | json }}</code></pre>
-    </article>
+    <h3 class="section__subtitle section__subtitle--spaced">Conditional Display Based on Selection</h3>
+    <div class="example-box">
+      <form [formGroup]="radioForm">
+        <usli-radio-group [formControl]="preferenceControl">
+          <legend>Select option:</legend>
+          <usli-radio
+            *ngFor="let option of radioOptions"
+            [value]="option.value"
+            [label]="option.label"
+          ></usli-radio>
+        </usli-radio-group>
+
+        <div *ngIf="preferenceControl.value === 'option2'" class="conditional-section">
+          <p>Additional options for Option 2 appear here</p>
+        </div>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-radio-group [formControl]="control"&gt;
+  &lt;legend&gt;Select option:&lt;/legend&gt;
+  &lt;usli-radio
+    *ngFor="let option of options"
+    [value]="option.value"
+    [label]="option.label"
+  &gt;&lt;/usli-radio&gt;
+&lt;/usli-radio-group&gt;
+
+&lt;div *ngIf="control.value === 'option2'"&gt;
+  Additional options appear here
+&lt;/div&gt;</code></pre>
+    </div>
   </section>
 
-  <!-- Error States Section -->
-  <section class="docs-section">
-    <h2>Error States</h2>
+  <hr class="divider" />
 
-    <article class="example">
-      <h3>Required Field Error</h3>
-      <p>Error message displayed when no option is selected.</p>
-      <div class="example-preview">
-        <form [formGroup]="radioForm">
-          <usli-radio-group [formControl]="selectionControl">
-            <legend>Required selection:</legend>
-            <usli-radio
-              *ngFor="let option of radioOptions"
-              [value]="option.value"
-              [label]="option.label"
-            ></usli-radio>
-          </usli-radio-group>
-          <p class="error-message" *ngIf="selectionControl.hasError('required') && selectionControl.touched">
-            This field is required
-          </p>
-        </form>
-      </div>
-    </article>
+  <section class="section">
+    <h2 class="section__title">Error States</h2>
+    <p class="section__desc">Display validation errors and manage disabled states effectively.</p>
 
-    <article class="example">
-      <h3>Disabled State</h3>
-      <p>A disabled radio group cannot be interacted with.</p>
-      <div class="example-preview">
-        <form [formGroup]="radioForm">
-          <usli-radio-group [formControl]="disabledPreferenceControl">
-            <legend>Disabled radio group:</legend>
-            <usli-radio
-              *ngFor="let option of radioOptions"
-              [value]="option.value"
-              [label]="option.label"
-            ></usli-radio>
-          </usli-radio-group>
-        </form>
-      </div>
-    </article>
+    <h3 class="section__subtitle">Required Field Error</h3>
+    <div class="example-box">
+      <form [formGroup]="radioForm">
+        <usli-radio-group [formControl]="selectionControl">
+          <legend>Required selection:</legend>
+          <usli-radio
+            *ngFor="let option of radioOptions"
+            [value]="option.value"
+            [label]="option.label"
+          ></usli-radio>
+        </usli-radio-group>
+        <p class="error-message" *ngIf="selectionControl.hasError('required') && selectionControl.touched">
+          This field is required
+        </p>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-radio-group [formControl]="control"&gt;
+  &lt;legend&gt;Required selection:&lt;/legend&gt;
+  &lt;usli-radio
+    *ngFor="let option of options"
+    [value]="option.value"
+    [label]="option.label"
+  &gt;&lt;/usli-radio&gt;
+&lt;/usli-radio-group&gt;
+&lt;p *ngIf="control.hasError('required')"&gt;
+  This field is required
+&lt;/p&gt;</code></pre>
+    </div>
+
+    <h3 class="section__subtitle section__subtitle--spaced">Disabled State</h3>
+    <div class="example-box">
+      <form [formGroup]="radioForm">
+        <usli-radio-group [formControl]="disabledPreferenceControl">
+          <legend>Disabled radio group:</legend>
+          <usli-radio
+            *ngFor="let option of radioOptions"
+            [value]="option.value"
+            [label]="option.label"
+          ></usli-radio>
+        </usli-radio-group>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-radio-group [formControl]="control" [disabled]="true"&gt;
+  &lt;legend&gt;Disabled radio group:&lt;/legend&gt;
+  &lt;usli-radio
+    *ngFor="let option of options"
+    [value]="option.value"
+    [label]="option.label"
+  &gt;&lt;/usli-radio&gt;
+&lt;/usli-radio-group&gt;</code></pre>
+    </div>
   </section>
 
-  <!-- API Documentation Section -->
-  <section class="docs-section">
-    <h2>API Documentation</h2>
+  <hr class="divider" />
 
+  <section class="section">
+    <h2 class="section__title">API</h2>
+
+    <h3 class="api-subtitle">Inputs</h3>
     <table class="api-table">
       <thead>
         <tr>
@@ -208,6 +279,19 @@
           <td>string</td>
           <td>Name attribute for radio button grouping</td>
         </tr>
+      </tbody>
+    </table>
+
+    <h3 class="api-subtitle api-subtitle--spaced">Outputs</h3>
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
         <tr>
           <td>change</td>
           <td>EventEmitter</td>
@@ -216,4 +300,5 @@
       </tbody>
     </table>
   </section>
+
 </div>

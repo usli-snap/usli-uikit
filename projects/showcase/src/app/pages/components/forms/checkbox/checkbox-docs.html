@@ -1,203 +1,226 @@
-<div class="app-docs-container">
-  <div class="breadcrumb">
-    <a href="/">Home</a> / <a href="/components">Components</a> /
-    <a href="/components/selection">Selection</a> / <strong>Checkbox</strong>
-  </div>
+<div class="page">
 
-  <h1>Checkbox Component</h1>
-  <p class="component-description">
-    A lightweight checkbox component for form inputs with support for reactive forms and form groups.
-  </p>
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Components</span>
+      <span class="breadcrumb__sep">/</span>
+      <span>Form Elements</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Checkbox</span>
+    </nav>
+    <h1 class="page-title">Checkbox</h1>
+    <p class="page-lead">
+      A lightweight checkbox component for form inputs with support for reactive forms and form groups.
+    </p>
+  </header>
 
-  <!-- Validation Examples Section -->
-  <section class="docs-section">
-    <h2>Validation Examples</h2>
+  <section class="section">
+    <h2 class="section__title">Validation Examples</h2>
+    <p class="section__desc">The Checkbox component supports reactive forms validation.</p>
 
-    <article class="example">
-      <h3>Required Checkbox</h3>
-      <p>A checkbox that must be checked before form submission.</p>
-      <div class="example-preview">
-        <form [formGroup]="checkboxForm">
-          <label>
-            <usli-checkbox
-              [formControl]="$any(checkboxForm.get('terms'))"
-            ></usli-checkbox>
-            I agree to terms
-          </label>
-          <p class="error-message" *ngIf="checkboxForm.get('terms')?.invalid && checkboxForm.get('terms')?.touched">
-            You must agree to continue
-          </p>
-        </form>
-      </div>
-      <pre><code>{{ checkboxForm | json }}</code></pre>
-    </article>
+    <h3 class="section__subtitle">Required Checkbox</h3>
+    <div class="example-box">
+      <form [formGroup]="checkboxForm">
+        <label>
+          <usli-checkbox
+            [formControl]="$any(checkboxForm.get('terms'))"
+          ></usli-checkbox>
+          I agree to terms
+        </label>
+        <p class="error-message" *ngIf="checkboxForm.get('terms')?.invalid && checkboxForm.get('terms')?.touched">
+          You must agree to continue
+        </p>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;label&gt;
+  &lt;usli-checkbox [formControl]="formControl"&gt;&lt;/usli-checkbox&gt;
+  I agree to terms
+&lt;/label&gt;</code></pre>
+    </div>
 
-    <article class="example">
-      <h3>Default Checked</h3>
-      <p>A checkbox with default checked state.</p>
-      <div class="example-preview">
-        <form [formGroup]="checkboxForm">
-          <label>
-            <usli-checkbox
-              [formControl]="$any(checkboxForm.get('notifications'))"
-            ></usli-checkbox>
-            Enable notifications
-          </label>
-        </form>
-      </div>
-      <pre><code>{{ checkboxForm | json }}</code></pre>
-    </article>
+    <h3 class="section__subtitle section__subtitle--spaced">Default Checked</h3>
+    <div class="example-box">
+      <form [formGroup]="checkboxForm">
+        <label>
+          <usli-checkbox
+            [formControl]="$any(checkboxForm.get('notifications'))"
+          ></usli-checkbox>
+          Enable notifications
+        </label>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;label&gt;
+  &lt;usli-checkbox [formControl]="formControl"&gt;&lt;/usli-checkbox&gt;
+  Enable notifications
+&lt;/label&gt;</code></pre>
+    </div>
 
-    <article class="example">
-      <h3>Disabled Checkbox</h3>
-      <p>A disabled checkbox state.</p>
-      <div class="example-preview">
-        <form [formGroup]="checkboxForm">
-          <label>
-            <usli-checkbox
-              [formControl]="$any(checkboxForm.get('newsletter'))"
-              [disabled]="true"
-            ></usli-checkbox>
-            Subscribe to newsletter
-          </label>
-        </form>
-      </div>
-      <pre><code>{{ checkboxForm | json }}</code></pre>
-    </article>
+    <h3 class="section__subtitle section__subtitle--spaced">Disabled Checkbox</h3>
+    <div class="example-box">
+      <form [formGroup]="checkboxForm">
+        <label>
+          <usli-checkbox
+            [formControl]="$any(checkboxForm.get('newsletter'))"
+            [disabled]="true"
+          ></usli-checkbox>
+          Subscribe to newsletter
+        </label>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;label&gt;
+  &lt;usli-checkbox [formControl]="formControl" [disabled]="true"&gt;&lt;/usli-checkbox&gt;
+  Subscribe to newsletter
+&lt;/label&gt;</code></pre>
+    </div>
   </section>
 
-  <!-- Form Integration Patterns Section -->
-  <section class="docs-section">
-    <h2>Form Integration Patterns</h2>
+  <hr class="divider" />
 
-    <article class="example">
-      <h3>Checkbox Group</h3>
-      <p>Multiple checkboxes managed as a group.</p>
-      <div class="example-preview">
-        <form [formGroup]="checkboxForm">
-          <fieldset>
-            <legend>Select options:</legend>
-            <label>
-              <usli-checkbox [formControl]="$any(checkboxForm.get('terms'))"></usli-checkbox>
-              Read
-            </label>
-            <label>
-              <usli-checkbox [formControl]="$any(checkboxForm.get('newsletter'))"></usli-checkbox>
-              Write
-            </label>
-            <label>
-              <usli-checkbox [formControl]="$any(checkboxForm.get('notifications'))"></usli-checkbox>
-              Delete
-            </label>
-          </fieldset>
-        </form>
-      </div>
-      <pre><code>{{ checkboxForm.value | json }}</code></pre>
-    </article>
+  <section class="section">
+    <h2 class="section__title">Form Integration Patterns</h2>
+    <p class="section__desc">Integrate checkboxes with Angular Reactive Forms for advanced form management.</p>
 
-    <article class="example">
-      <h3>Checkbox Group with FormArray</h3>
-      <p>Multiple checkboxes managed as a group using FormArray.</p>
-      <div class="example-preview">
-        <form>
-          <fieldset>
-            <legend>Select permissions:</legend>
-            <div>
-              <label *ngFor="let control of checkboxGroup.controls; let i = index">
-                <usli-checkbox [formControl]="control"></usli-checkbox>
-                {{ ['Read', 'Write', 'Delete'][i] }}
-              </label>
-            </div>
-          </fieldset>
-        </form>
-      </div>
-      <pre><code>{{ checkboxGroup.value | json }}</code></pre>
-    </article>
-
-    <article class="example">
-      <h3>Conditional Visibility</h3>
-      <p>Showing/hiding form sections based on checkbox state.</p>
-      <div class="example-preview">
-        <form [formGroup]="checkboxForm">
+    <h3 class="section__subtitle">Checkbox Group</h3>
+    <div class="example-box">
+      <form [formGroup]="checkboxForm">
+        <fieldset>
+          <legend>Select options:</legend>
           <label>
-            <usli-checkbox
-              [formControl]="$any(checkboxForm.get('newsletter'))"
-            ></usli-checkbox>
-            Subscribe to newsletter
+            <usli-checkbox [formControl]="$any(checkboxForm.get('terms'))"></usli-checkbox>
+            Read
           </label>
+          <label>
+            <usli-checkbox [formControl]="$any(checkboxForm.get('newsletter'))"></usli-checkbox>
+            Write
+          </label>
+          <label>
+            <usli-checkbox [formControl]="$any(checkboxForm.get('notifications'))"></usli-checkbox>
+            Delete
+          </label>
+        </fieldset>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;fieldset&gt;
+  &lt;legend&gt;Select options:&lt;/legend&gt;
+  &lt;label&gt;
+    &lt;usli-checkbox [formControl]="control"&gt;&lt;/usli-checkbox&gt;
+    Read
+  &lt;/label&gt;
+  &lt;label&gt;
+    &lt;usli-checkbox [formControl]="control"&gt;&lt;/usli-checkbox&gt;
+    Write
+  &lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+    </div>
 
-          <div *ngIf="checkboxForm.get('newsletter')?.value" class="conditional-section">
-            <p>Subscription options will appear here</p>
+    <h3 class="section__subtitle section__subtitle--spaced">Checkbox Group with FormArray</h3>
+    <div class="example-box">
+      <form>
+        <fieldset>
+          <legend>Select permissions:</legend>
+          <div>
+            <label *ngFor="let control of checkboxGroup.controls; let i = index">
+              <usli-checkbox [formControl]="control"></usli-checkbox>
+              {{ ['Read', 'Write', 'Delete'][i] }}
+            </label>
           </div>
-        </form>
-      </div>
-    </article>
+        </fieldset>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;label *ngFor="let control of controls; let i = index"&gt;
+  &lt;usli-checkbox [formControl]="control"&gt;&lt;/usli-checkbox&gt;
+  {{ permissions[i] }}
+&lt;/label&gt;</code></pre>
+    </div>
 
-    <article class="example">
-      <h3>Dynamic Checkbox List</h3>
-      <p>Creating checkboxes dynamically from an array of options.</p>
-      <div class="example-preview">
-        <form [formGroup]="checkboxForm">
-          <label>
-            <usli-checkbox
-              [formControl]="$any(checkboxForm.get('terms'))"
-            ></usli-checkbox>
-            Accept terms and conditions
-          </label>
-          <label>
-            <usli-checkbox
-              [formControl]="$any(checkboxForm.get('newsletter'))"
-            ></usli-checkbox>
-            Receive marketing emails
-          </label>
-        </form>
-      </div>
-    </article>
+    <h3 class="section__subtitle section__subtitle--spaced">Conditional Visibility</h3>
+    <div class="example-box">
+      <form [formGroup]="checkboxForm">
+        <label>
+          <usli-checkbox
+            [formControl]="$any(checkboxForm.get('newsletter'))"
+          ></usli-checkbox>
+          Subscribe to newsletter
+        </label>
+
+        <div *ngIf="checkboxForm.get('newsletter')?.value" class="conditional-section">
+          <p>Subscription options will appear here</p>
+        </div>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;label&gt;
+  &lt;usli-checkbox [formControl]="control"&gt;&lt;/usli-checkbox&gt;
+  Subscribe to newsletter
+&lt;/label&gt;
+
+&lt;div *ngIf="control.value"&gt;
+  Subscription options...
+&lt;/div&gt;</code></pre>
+    </div>
   </section>
 
-  <!-- Error States Section -->
-  <section class="docs-section">
-    <h2>Error States</h2>
+  <hr class="divider" />
 
-    <article class="example">
-      <h3>Required Field Error</h3>
-      <p>Error state when a required checkbox is not checked.</p>
-      <div class="example-preview">
-        <form [formGroup]="checkboxForm">
-          <label>
-            <usli-checkbox
-              [formControl]="$any(checkboxForm.get('terms'))"
-            ></usli-checkbox>
-            I accept the terms
-          </label>
-          <p class="error-message" *ngIf="checkboxForm.get('terms')?.hasError('required') && checkboxForm.get('terms')?.touched">
-            This field is required
-          </p>
-        </form>
-      </div>
-    </article>
+  <section class="section">
+    <h2 class="section__title">Error States</h2>
+    <p class="section__desc">Display validation errors and manage disabled states.</p>
 
-    <article class="example">
-      <h3>Disabled State</h3>
-      <p>A disabled checkbox cannot be interacted with.</p>
-      <div class="example-preview">
-        <form [formGroup]="checkboxForm">
-          <label>
-            <usli-checkbox
-              [formControl]="$any(checkboxForm.get('newsletter'))"
-              [disabled]="true"
-            ></usli-checkbox>
-            This checkbox is disabled
-          </label>
-        </form>
-      </div>
-    </article>
+    <h3 class="section__subtitle">Required Field Error</h3>
+    <div class="example-box">
+      <form [formGroup]="checkboxForm">
+        <label>
+          <usli-checkbox
+            [formControl]="$any(checkboxForm.get('terms'))"
+          ></usli-checkbox>
+          I accept the terms
+        </label>
+        <p class="error-message" *ngIf="checkboxForm.get('terms')?.hasError('required') && checkboxForm.get('terms')?.touched">
+          This field is required
+        </p>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;label&gt;
+  &lt;usli-checkbox [formControl]="control"&gt;&lt;/usli-checkbox&gt;
+  I accept the terms
+&lt;/label&gt;
+&lt;p *ngIf="control.hasError('required')"&gt;
+  This field is required
+&lt;/p&gt;</code></pre>
+    </div>
+
+    <h3 class="section__subtitle section__subtitle--spaced">Disabled State</h3>
+    <div class="example-box">
+      <form [formGroup]="checkboxForm">
+        <label>
+          <usli-checkbox
+            [formControl]="$any(checkboxForm.get('newsletter'))"
+            [disabled]="true"
+          ></usli-checkbox>
+          This checkbox is disabled
+        </label>
+      </form>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;label&gt;
+  &lt;usli-checkbox [formControl]="control" [disabled]="true"&gt;&lt;/usli-checkbox&gt;
+  This checkbox is disabled
+&lt;/label&gt;</code></pre>
+    </div>
   </section>
 
-  <!-- API Documentation Section -->
-  <section class="docs-section">
-    <h2>API Documentation</h2>
+  <hr class="divider" />
 
+  <section class="section">
+    <h2 class="section__title">API</h2>
+
+    <h3 class="api-subtitle">Inputs</h3>
     <table class="api-table">
       <thead>
         <tr>
@@ -222,6 +245,19 @@
           <td>any</td>
           <td>The value of the checkbox</td>
         </tr>
+      </tbody>
+    </table>
+
+    <h3 class="api-subtitle api-subtitle--spaced">Outputs</h3>
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
         <tr>
           <td>change</td>
           <td>EventEmitter</td>
@@ -230,4 +266,5 @@
       </tbody>
     </table>
   </section>
+
 </div>
