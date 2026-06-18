@@ -1,0 +1,184 @@
+<div class="page">
+  <div class="breadcrumb">
+    <span class="breadcrumb-item">Components</span>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-item">Inputs</span>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-item active">Input</span>
+  </div>
+
+  <h1>Input Component</h1>
+  <p class="description">A flexible text input component with built-in validation, error handling, and support for various input types.</p>
+
+  <section class="section">
+    <h2>Validation Examples</h2>
+    <p>The Input component supports reactive forms validation with real-time feedback.</p>
+
+    <div class="example">
+      <h3>Email Validation</h3>
+      <div class="demo-box">
+        <label>Email Address</label>
+        <usli-input
+          type="email"
+          placeholder="Enter your email"
+          [formControl]="$any(form.get('email'))">
+        </usli-input>
+      </div>
+      <pre><code>&lt;usli-input
+  type="email"
+  placeholder="Enter your email"
+  [formControl]="emailControl"&gt;
+&lt;/usli-input&gt;</code></pre>
+    </div>
+
+    <div class="example">
+      <h3>Required Field</h3>
+      <div class="demo-box">
+        <label>Name (Required)</label>
+        <usli-input
+          placeholder="This field is required"
+          [formControl]="$any(form.get('required'))">
+        </usli-input>
+      </div>
+      <pre><code>&lt;usli-input
+  placeholder="This field is required"
+  [formControl]="requiredControl"&gt;
+&lt;/usli-input&gt;</code></pre>
+    </div>
+
+    <div class="example">
+      <h3>Min/Max Length</h3>
+      <div class="demo-box">
+        <label>Username (3-20 characters)</label>
+        <usli-input
+          placeholder="Enter 3-20 characters"
+          [formControl]="$any(form.get('minmax'))">
+        </usli-input>
+      </div>
+      <pre><code>&lt;usli-input
+  placeholder="Enter 3-20 characters"
+  [formControl]="lengthControl"&gt;
+&lt;/usli-input&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Form Integration Patterns</h2>
+    <p>Integrate the Input component with Angular Reactive Forms for advanced form management.</p>
+
+    <div class="example">
+      <h3>FormGroup Integration</h3>
+      <div class="demo-box">
+        <label>Form-Bound Input</label>
+        <usli-input
+          placeholder="Bound to FormControl"
+          [formControl]="$any(form.get('formBound'))">
+        </usli-input>
+      </div>
+      <pre><code>&lt;usli-input
+  placeholder="Bound to FormControl"
+  [formControl]="formControl"&gt;
+&lt;/usli-input&gt;</code></pre>
+    </div>
+
+    <div class="example">
+      <h3>Two-Way Binding</h3>
+      <div class="demo-box">
+        <label>Value: {{ form.get('twoWay')?.value || 'empty' }}</label>
+        <usli-input
+          placeholder="Type to see value update"
+          [formControl]="$any(form.get('twoWay'))">
+        </usli-input>
+      </div>
+      <pre><code>&lt;usli-input
+  placeholder="Type to see value update"
+  [formControl]="twoWayControl"&gt;
+&lt;/usli-input&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Error States</h2>
+    <p>Display validation errors and manage disabled states effectively.</p>
+
+    <div class="example">
+      <h3>Validation Error Display</h3>
+      <div class="demo-box">
+        <label>Email with Error</label>
+        <usli-input
+          type="email"
+          placeholder="Invalid email will show error"
+          [formControl]="$any(form.get('errorEmail'))"
+          errorMessage="Please enter a valid email address">
+        </usli-input>
+        <p *ngIf="form.get('errorEmail')?.invalid && form.get('errorEmail')?.touched" class="error-text">
+          Please enter a valid email address
+        </p>
+      </div>
+      <pre><code>&lt;usli-input
+  type="email"
+  placeholder="Invalid email will show error"
+  [formControl]="errorControl"
+  errorMessage="Please enter a valid email address"&gt;
+&lt;/usli-input&gt;</code></pre>
+    </div>
+
+    <div class="example">
+      <h3>Disabled State</h3>
+      <div class="demo-box">
+        <label>Disabled Field</label>
+        <usli-input
+          placeholder="This field is disabled"
+          [formControl]="$any(form.get('disabled'))">
+        </usli-input>
+      </div>
+      <pre><code>&lt;usli-input
+  placeholder="This field is disabled"
+  [disabled]="true"&gt;
+&lt;/usli-input&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>API Documentation</h2>
+    <p>Complete reference for Input component inputs, outputs, and properties.</p>
+
+    <h3>Inputs</h3>
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>string</td>
+          <td>'text'</td>
+          <td>Input type (text, email, password, number, tel, url, search, etc.)</td>
+        </tr>
+        <tr>
+          <td>placeholder</td>
+          <td>string</td>
+          <td>undefined</td>
+          <td>Placeholder text displayed when input is empty</td>
+        </tr>
+        <tr>
+          <td>disabled</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Disables the input field</td>
+        </tr>
+        <tr>
+          <td>errorMessage</td>
+          <td>string</td>
+          <td>undefined</td>
+          <td>Error message displayed when validation fails</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
