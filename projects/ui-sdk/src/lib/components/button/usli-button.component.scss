@@ -2,8 +2,8 @@
   display: inline-block;
 }
 
-// Base overrides shared by both variants — applied on top of Bootstrap's .btn
-.usli-button {
+// Base overrides shared by all variants — applied on top of Bootstrap's .btn
+button {
   font-family: var(--font-roboto, 'Roboto', sans-serif);
   font-weight: var(--fw-medium, 500);
   letter-spacing: var(--type-button-spacing, 0.08em);
@@ -11,6 +11,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid transparent;
   gap: 0.5rem;
   border-radius: 0.25rem;
   transition: background-color 200ms ease, border-color 200ms ease,
@@ -19,6 +20,10 @@
   &:focus-visible {
     outline: 3px solid var(--blue-300, #4d78c9);
     outline-offset: 2px;
+  }
+
+  &.disabled, &[disabled] {
+    cursor: not-allowed;
   }
 }
 
@@ -29,14 +34,16 @@
   --bs-btn-bg:             var(--blue-500, #00338e);
   --bs-btn-border-color:   var(--blue-500, #00338e);
   --bs-btn-hover-color:    var(--blue-500, #00338e);
-  --bs-btn-hover-bg:       var(--white, #002c7c);
-  --bs-btn-hover-border:   var(--blue-600, #002c7c);
+  --bs-btn-hover-bg:       var(--white, #ffffff);
+  --bs-btn-hover-border:   var(--blue-500, #00338e);
   --bs-btn-active-color:   var(--white, #ffffff);
   --bs-btn-active-bg:      var(--blue-700, #00216a);
   --bs-btn-active-border:  var(--blue-700, #00216a);
   --bs-btn-disabled-color: var(--white, #ffffff);
   --bs-btn-disabled-bg:    var(--blue-400, #255dbf);
   --bs-btn-disabled-border:var(--blue-400, #255dbf);
+
+  &:hover { border-color: var(--bs-btn-border-color); }
 }
 
 // ── Secondary — outlined USLI Blue ────────────────────────────────────────
@@ -44,15 +51,17 @@
   --bs-btn-color:           var(--blue-500, #00338e);
   --bs-btn-bg:              transparent;
   --bs-btn-border-color:    var(--blue-500, #00338e);
-  --bs-btn-hover-color:     var(--blue-700, #00216a);
+  --bs-btn-hover-color:     var(--blue-500, #00338e);
   --bs-btn-hover-bg:        var(--blue-50, #e3e9f6);
-  --bs-btn-hover-border:    var(--blue-500, #00338e);
+  --bs-btn-hover-border:    var(--blue-600, #002c7c);
   --bs-btn-active-color:    var(--blue-700, #00216a);
   --bs-btn-active-bg:       var(--blue-100, #b3c2e6);
   --bs-btn-active-border:   var(--blue-700, #00216a);
   --bs-btn-disabled-color:  var(--blue-300, #4d78c9);
   --bs-btn-disabled-bg:     transparent;
   --bs-btn-disabled-border: var(--blue-300, #4d78c9);
+
+  border-color: var(--bs-btn-border-color);
 }
 
 // ── Tertiary — text/ghost, no border ──────────────────────────────────────
@@ -76,9 +85,9 @@
   --bs-btn-color:           var(--white, #ffffff);
   --bs-btn-bg:              var(--error-500, #b10505);
   --bs-btn-border-color:    var(--error-500, #b10505);
-  --bs-btn-hover-color:     var(--white, #ffffff);
-  --bs-btn-hover-bg:        var(--error-600, #940404);
-  --bs-btn-hover-border:    var(--error-600, #940404);
+  --bs-btn-hover-color:     var(--error-500, #b10505);
+  --bs-btn-hover-bg:        var(--white, #ffffff);
+  --bs-btn-hover-border:    var(--error-500, #b10505);
   --bs-btn-active-color:    var(--white, #ffffff);
   --bs-btn-active-bg:       var(--error-700, #770303);
   --bs-btn-active-border:   var(--error-700, #770303);
@@ -86,6 +95,7 @@
   --bs-btn-disabled-bg:     var(--error-300, #e65858);
   --bs-btn-disabled-border: var(--error-300, #e65858);
 
+  &:hover { border-color: var(--bs-btn-border-color); }
   &:focus-visible {
     outline-color: var(--error-300, #e65858);
   }
@@ -97,15 +107,18 @@
   --bs-btn-bg:              var(--warning-500, #efc100);
   --bs-btn-border-color:    var(--warning-500, #efc100);
   --bs-btn-hover-color:     var(--warning-900, #4d3c00);
-  --bs-btn-hover-bg:        var(--warning-600, #c29a00);
-  --bs-btn-hover-border:    var(--warning-600, #c29a00);
+  --bs-btn-hover-bg:        var(--white, #ffffff);
+  --bs-btn-hover-border:    var(--warning-500, #efc100);
   --bs-btn-active-color:    var(--warning-900, #4d3c00);
   --bs-btn-active-bg:       var(--warning-700, #997800);
   --bs-btn-active-border:   var(--warning-700, #997800);
   --bs-btn-disabled-color:  var(--warning-700, #997800);
   --bs-btn-disabled-bg:     var(--warning-200, #fff59d);
   --bs-btn-disabled-border: var(--warning-200, #fff59d);
-
+  &:hover {
+    border-color: var(--bs-btn-border-color);
+    background-color: var(--warning-100, #fff9c4);
+  }
   &:focus-visible {
     outline-color: var(--warning-400, #ffee58);
   }
@@ -116,16 +129,16 @@
   --bs-btn-color:           var(--white, #ffffff);
   --bs-btn-bg:              var(--info-600, #4996e3);
   --bs-btn-border-color:    var(--info-600, #4996e3);
-  --bs-btn-hover-color:     var(--white, #ffffff);
-  --bs-btn-hover-bg:        var(--info-700, #3478c3);
-  --bs-btn-hover-border:    var(--info-700, #3478c3);
+  --bs-btn-hover-color:     var(--info-600, #4996e3);
+  --bs-btn-hover-bg:        var(--white, #ffffff);
+  --bs-btn-hover-border:    var(--info-600, #4996e3);
   --bs-btn-active-color:    var(--white, #ffffff);
   --bs-btn-active-bg:       var(--info-800, #235aa0);
   --bs-btn-active-border:   var(--info-800, #235aa0);
   --bs-btn-disabled-color:  var(--white, #ffffff);
   --bs-btn-disabled-bg:     var(--info-300, #60b0fd);
   --bs-btn-disabled-border: var(--info-300, #60b0fd);
-
+  &:hover { border-color: var(--bs-btn-border-color); }
   &:focus-visible {
     outline-color: var(--info-300, #60b0fd);
   }
@@ -136,16 +149,16 @@
   --bs-btn-color:           var(--white, #ffffff);
   --bs-btn-bg:              var(--success-500, #14661a);
   --bs-btn-border-color:    var(--success-500, #14661a);
-  --bs-btn-hover-color:     var(--white, #ffffff);
-  --bs-btn-hover-bg:        var(--success-600, #105515);
-  --bs-btn-hover-border:    var(--success-600, #105515);
+  --bs-btn-hover-color:     var(--success-500, #14661a);
+  --bs-btn-hover-bg:        var(--white, #ffffff);
+  --bs-btn-hover-border:    var(--success-500, #14661a);
   --bs-btn-active-color:    var(--white, #ffffff);
   --bs-btn-active-bg:       var(--success-700, #0d4411);
   --bs-btn-active-border:   var(--success-700, #0d4411);
   --bs-btn-disabled-color:  var(--white, #ffffff);
   --bs-btn-disabled-bg:     var(--success-300, #55bb59);
   --bs-btn-disabled-border: var(--success-300, #55bb59);
-
+  &:hover { border-color: var(--bs-btn-border-color); }
   &:focus-visible {
     outline-color: var(--success-300, #55bb59);
   }

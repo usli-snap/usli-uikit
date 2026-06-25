@@ -37,16 +37,16 @@
 
     <h3 class="section__subtitle section__subtitle--spaced">Semantic variants</h3>
     <div class="example-box">
-      <usli-button label="Error"   variant="error"   />
+      <usli-button label="Delete"   variant="error"   />
       <usli-button label="Warning" variant="warning" />
       <usli-button label="Info"    variant="info"    />
-      <usli-button label="Success" variant="success" />
+      <usli-button label="Continue" variant="success" />
     </div>
     <div class="code-block">
-      <pre><code>&lt;usli-button label="Error"   variant="error"   /&gt;
+      <pre><code>&lt;usli-button label="Delete"   variant="error"   /&gt;
 &lt;usli-button label="Warning" variant="warning" /&gt;
 &lt;usli-button label="Info"    variant="info"    /&gt;
-&lt;usli-button label="Success" variant="success" /&gt;</code></pre>
+&lt;usli-button label="Continue" variant="success" /&gt;</code></pre>
     </div>
   </section>
 
@@ -102,6 +102,81 @@
 
   <hr class="divider" />
 
+  <!-- Invoker Commands -->
+  <section class="section">
+    <h2 class="section__title">Invoker Commands <span class="browser-badge">New in browsers</span></h2>
+    <p class="section__desc">
+      The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API" target="_blank" rel="noopener">Invoker Commands API</a>
+      lets a button open, close, or toggle another element — no JavaScript required.
+      Use <code>commandFor</code> to point at a target element's <code>id</code>, and
+      <code>command</code> to specify what to do: <code>toggle-popover</code>,
+      <code>show-modal</code>, or <code>close</code>.
+      Available in Chrome 130+, Edge 130+, Firefox 135+, and Safari 18.4+.
+    </p>
+
+    <h3 class="section__subtitle">Popover</h3>
+    <div class="example-box">
+      <usli-button label="Toggle Popover" variant="primary"
+        commandFor="invoker-demo-popover" command="toggle-popover" />
+      <div id="invoker-demo-popover" popover class="invoker-popover" appDraggable>
+        <div class="popover-header" data-drag-handle>Native Popover</div>
+        <div class="popover-body">
+          No JavaScript — the browser handles show/hide via the Invoker Commands API.
+        </div>
+      </div>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-button label="Toggle Popover" variant="primary"
+  commandFor="my-popover" command="toggle-popover" /&gt;
+
+&lt;div id="my-popover" popover class="invoker-popover"&gt;
+  &lt;div class="popover-header"&gt;Title&lt;/div&gt;
+  &lt;div class="popover-body"&gt;Content&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <h3 class="section__subtitle section__subtitle--spaced">Modal Dialog</h3>
+    <div class="example-box">
+      <usli-button label="Open Dialog" variant="primary"
+        commandFor="invoker-demo-dialog" command="show-modal" />
+      <dialog id="invoker-demo-dialog" class="invoker-dialog" appDraggable>
+        <div class="modal-header" data-drag-handle>
+          <h5 class="modal-title">Confirm action</h5>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0">
+            This dialog was opened with <code>command="show-modal"</code> — zero JavaScript.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <usli-button label="Cancel" variant="secondary"
+            commandFor="invoker-demo-dialog" command="close" />
+          <usli-button label="Confirm" variant="primary"
+            commandFor="invoker-demo-dialog" command="close" />
+        </div>
+      </dialog>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-button label="Open Dialog" variant="primary"
+  commandFor="my-dialog" command="show-modal" /&gt;
+
+&lt;dialog id="my-dialog" class="invoker-dialog"&gt;
+  &lt;div class="modal-header"&gt;
+    &lt;h5 class="modal-title"&gt;Confirm action&lt;/h5&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-body"&gt;Dialog content&lt;/div&gt;
+  &lt;div class="modal-footer"&gt;
+    &lt;usli-button label="Cancel" variant="secondary"
+      commandFor="my-dialog" command="close" /&gt;
+    &lt;usli-button label="Confirm" variant="primary"
+      commandFor="my-dialog" command="close" /&gt;
+  &lt;/div&gt;
+&lt;/dialog&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
   <!-- API -->
   <section class="section">
     <h2 class="section__title">API</h2>
@@ -146,6 +221,18 @@
           <td><span class="prop-type">string | undefined</span></td>
           <td><span class="prop-default">undefined</span></td>
           <td>Optional inline background-color override.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">commandFor</span></td>
+          <td><span class="prop-type">string | undefined</span></td>
+          <td><span class="prop-default">undefined</span></td>
+          <td>Invoker Commands: <code>id</code> of the element this button controls (popover or dialog).</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">command</span></td>
+          <td><span class="prop-type">string | undefined</span></td>
+          <td><span class="prop-default">undefined</span></td>
+          <td>Invoker Commands: action to invoke — <code>toggle-popover</code>, <code>show-modal</code>, or <code>close</code>.</td>
         </tr>
       </tbody>
     </table>

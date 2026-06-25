@@ -2,8 +2,11 @@
   type="button"
   [class]="classes()"
   [attr.disabled]="disabled() ? true : null"
+  [title]="disabled() ? 'Disabled - Reason for being disabled' : ''"
+  [attr.aria-label]="disabled() ? 'Disabled - Reason for being disabled' : 'Click here to ' + label()"
+  [attr.commandfor]="commandFor() ?? null"
+  [attr.command]="command() ?? null"
   [style.background-color]="backgroundColor() ?? null"
-  (click)="clicked.emit($event)"
->
+  (click)="clicked.emit($event)">
   <ng-content>{{ label() }}</ng-content>
 </button>

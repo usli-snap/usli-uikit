@@ -28,6 +28,12 @@ export class UsliButtonComponent {
   /** Disabled state */
   disabled = input(false);
 
+  /** Invoker Commands: ID of the element this button should invoke commands on */
+  commandFor = input<string | undefined>();
+
+  /** Invoker Commands: command to send to the commandfor target (e.g. 'toggle-popover', 'show-modal', 'close') */
+  command = input<string | undefined>();
+
   /** Emits the native MouseEvent on click */
   clicked = output<MouseEvent>();
 
@@ -35,6 +41,6 @@ export class UsliButtonComponent {
     const v       = this.variant() ?? (this.primary() ? 'primary' : 'secondary');
     const sizeMap = { small: 'btn-sm', medium: '', large: 'btn-lg' } as const;
     const bsSize  = sizeMap[this.size()];
-    return `usli-button btn ${bsSize} usli-button--${v} btn-usli-${v}`.trim().replace(/\s+/g, ' ');
+    return `btn ${bsSize} btn-usli-${v}`.trim().replace(/\s+/g, ' ');
   });
 }

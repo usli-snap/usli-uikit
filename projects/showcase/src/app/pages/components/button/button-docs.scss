@@ -22,6 +22,99 @@
   }
 }
 
+.browser-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--blue-50, #e3e9f6);
+  color: var(--blue-700, #00216a);
+  border: 1px solid var(--blue-200, #7a99d9);
+  border-radius: 999px;
+  padding: 0.15em 0.6em;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  position: relative;
+  top: -0.1em;
+}
+
+.invoker-popover {
+  // UA keeps: position fixed; inset: 0; margin: auto (browser centers it)
+  // We only override visual chrome
+  padding: 0;
+  border: var(--bs-border-width, 1px) solid var(--bs-border-color, #dee2e6);
+  border-radius: var(--bs-border-radius-lg, 0.5rem);
+  background: var(--bs-body-bg, #fff);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  max-width: 300px;
+  overflow: hidden;
+  font-size: 0.875rem;
+
+  .popover-header {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    background: var(--bs-secondary-bg, #e9ecef);
+    border-bottom: var(--bs-border-width, 1px) solid var(--bs-border-color, #dee2e6);
+    cursor: move;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .popover-body {
+    padding: 1rem;
+    color: var(--bs-body-color, #212529);
+    line-height: 1.5;
+  }
+}
+
+.invoker-dialog {
+  // Reset UA <dialog> chrome; we provide the visual shell directly
+  padding: 0;
+  border: var(--bs-border-width, 1px) solid var(--bs-border-color, #dee2e6);
+  border-radius: var(--bs-border-radius-lg, 0.5rem);
+  background: var(--bs-body-bg, #fff);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.25);
+  max-width: 480px;
+  width: 90vw;
+  overflow: hidden;
+
+  &::backdrop { background: rgba(0, 0, 0, 0.5); }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: var(--bs-border-width, 1px) solid var(--bs-border-color, #dee2e6);
+    cursor: move;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .modal-body {
+    padding: 1rem;
+    color: var(--bs-body-color, #212529);
+  }
+
+  .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-top: var(--bs-border-width, 1px) solid var(--bs-border-color, #dee2e6);
+    background: var(--bs-tertiary-bg, #f8f9fa);
+  }
+}
+
 code {
   font-family: 'Roboto Mono', Consolas, monospace;
   font-size: 0.85em;
