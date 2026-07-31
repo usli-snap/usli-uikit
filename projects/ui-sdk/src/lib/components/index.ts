@@ -4,3 +4,5 @@ export * from './alert';
 export * from './card';
 export * from './spinner';
 export * from './forms';
+export * from './tabs';
+export * from './accordion';
