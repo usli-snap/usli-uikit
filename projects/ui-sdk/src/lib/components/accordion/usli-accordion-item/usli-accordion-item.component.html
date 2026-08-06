@@ -1,15 +1,6 @@
 <div [class]="classes()">
   <h2 class="accordion-header">
-    <button
-      type="button"
-      class="accordion-button"
-      [class.collapsed]="!isOpen()"
-      [disabled]="disabled()"
-      [id]="headerId"
-      [attr.aria-expanded]="isOpen()"
-      [attr.aria-controls]="panelId"
-      (click)="toggle()"
-    >
+    <button type="button" class="accordion-button" [class.collapsed]="!isOpen()" [disabled]="disabled()" [id]="headerId" [attr.aria-expanded]="isOpen()" [attr.aria-controls]="panelId" (click)="toggle()">
       {{ label() }}
     </button>
   </h2>
