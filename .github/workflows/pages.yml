@@ -40,6 +40,15 @@ jobs:
       - name: Build Compodoc
         run: npm run compodoc:ci
 
+      - name: Print artifact layout
+        run: |
+          echo "=== dist ==="
+          find dist -maxdepth 4 -type d | sort 2>/dev/null || echo "(dist not found)"
+          echo "=== storybook-static ==="
+          ls -la storybook-static 2>/dev/null || echo "(storybook-static not found)"
+          echo "=== compodoc ==="
+          find dist/compodoc -maxdepth 3 -type d | sort 2>/dev/null || echo "(dist/compodoc not found)"
+
       - name: Assemble GitHub Pages site
         run: |
           mkdir -p public
@@ -55,7 +64,15 @@ jobs:
           fi
 
           cp -R storybook-static public/storybook
-          cp -R dist/compodoc/ui-sdk public/compodoc
+
+          if [ -d dist/compodoc/ui-sdk ]; then
+            cp -R dist/compodoc/ui-sdk public/compodoc
+          elif [ -d dist/compodoc ]; then
+            cp -R dist/compodoc public/compodoc
+          else
+            echo "Could not find compodoc build output in dist/compodoc"
+            exit 1
+          fi
           cp projects/showcase/src/assets/usli-navbar.css public/usli-navbar.css
 
           # Create navbar HTML snippet
