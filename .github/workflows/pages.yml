@@ -31,8 +31,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Compute Pages base path
+        id: pages_base
+        run: echo "path=/${GITHUB_REPOSITORY##*/}/showcase/" >> "$GITHUB_OUTPUT"
+
       - name: Build showcase app
-        run: npm run build:showcase:pages
+        run: npm run build:showcase:pages -- --base-href "${{ steps.pages_base.outputs.path }}" --deploy-url "${{ steps.pages_base.outputs.path }}"
 
       - name: Build Storybook
         run: npm run build-storybook
