@@ -8,6 +8,14 @@ import { createDialogController } from '../../shared/dialog-controller';
   templateUrl: './usli-modal.component.html',
   styleUrl: './usli-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    // Without this, a static `id="..."` attribute in a consumer's template
+    // (e.g. <usli-modal id="demo-modal">) lands on THIS host element too,
+    // duplicating the id also set on the inner <dialog>. commandFor resolves
+    // to the first DOM match for an id — the non-dialog host — so the
+    // Invoker Commands trigger (show-modal/close) silently no-ops. Strip it.
+    '[attr.id]': 'null',
+  },
 })
 export class UsliModalComponent {
   /**

@@ -8,6 +8,12 @@ import { createDialogController } from '../../shared/dialog-controller';
   templateUrl: './usli-offcanvas.component.html',
   styleUrl: './usli-offcanvas.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    // See usli-modal.component.ts for why: without this, a static id="..."
+    // attribute duplicates onto this host element too, and commandFor
+    // resolves to the wrong (non-dialog) element, silently no-oping.
+    '[attr.id]': 'null',
+  },
 })
 export class UsliOffcanvasComponent {
   /**

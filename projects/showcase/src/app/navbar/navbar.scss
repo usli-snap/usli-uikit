@@ -1,3 +1,15 @@
 :host {
   display: block;
 }
+
+// position: sticky on .usli-navbar (from the shared usli-navbar.css, also
+// used verbatim by compodoc/storybook) doesn't hold in the showcase app —
+// some combination of content further down the page (e.g. .code-block's
+// own overflow:auto) breaks the browser's sticky containing-block
+// calculation for this element specifically. position: fixed sidesteps it
+// reliably; .docs-body compensates with a matching top margin.
+.usli-navbar {
+  position: fixed !important;
+  left: 0;
+  right: 0;
+}
