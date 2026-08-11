@@ -1,0 +1,76 @@
+<div class="page">
+
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Components</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Breadcrumb</span>
+    </nav>
+    <h1 class="page-title">Breadcrumb</h1>
+    <p class="page-lead">
+      Show the user's location within a hierarchy. The last item always renders as
+      plain text marking the current page, even if it has an href.
+    </p>
+  </header>
+
+  <section class="section">
+    <h2 class="section__title">Basic usage</h2>
+    <p class="section__desc">
+      Pass an ordered list of items. Every item but the last may have an href.
+    </p>
+    <div class="example-box">
+      <usli-breadcrumb
+        [items]="[
+          { label: 'Home', href: '/' },
+          { label: 'Components', href: '/components' },
+          { label: 'Breadcrumb' }
+        ]"
+      />
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-breadcrumb
+  [items]="[
+    &#123; label: 'Home', href: '/' &#125;,
+    &#123; label: 'Components', href: '/components' &#125;,
+    &#123; label: 'Breadcrumb' &#125;
+  ]"
+/&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Inputs</h2>
+    <table class="api-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">items</span></td>
+          <td><span class="prop-type">{{ '{' }} label: string; href?: string {{ '}' }}[]</span></td>
+          <td><span class="prop-default">required</span></td>
+          <td>Ordered list of crumbs. The last item is always the current page.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2 class="section__title">Outputs</h2>
+    <table class="api-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">itemClick</span></td>
+          <td><span class="prop-type">OutputEmitterRef&lt;UsliBreadcrumbItem&gt;</span></td>
+          <td>Emitted when a non-current, linked crumb is clicked.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

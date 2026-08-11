@@ -1,0 +1,90 @@
+<div class="page">
+
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Components</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Input Group</span>
+    </nav>
+    <h1 class="page-title">Input Group</h1>
+    <p class="page-lead">
+      Wraps a form control with prepended and/or appended text, icons, or
+      buttons. Uses named content slots since prepend/append content is often
+      interactive, not just text.
+    </p>
+  </header>
+
+  <section class="section">
+    <h2 class="section__title">Text prepend</h2>
+    <div class="example-box">
+      <usli-input-group>
+        <span usliPrepend class="input-group-text">&#64;</span>
+        <input class="form-control" placeholder="username" />
+      </usli-input-group>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-input-group&gt;
+  &lt;span usliPrepend class="input-group-text"&gt;&#64;&lt;/span&gt;
+  &lt;input class="form-control" placeholder="username" /&gt;
+&lt;/usli-input-group&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Button append</h2>
+    <div class="example-box">
+      <usli-input-group>
+        <input class="form-control" placeholder="Search" />
+        <button usliAppend class="btn btn-usli-primary" type="button">Go</button>
+      </usli-input-group>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-input-group&gt;
+  &lt;input class="form-control" placeholder="Search" /&gt;
+  &lt;button usliAppend class="btn btn-usli-primary" type="button"&gt;Go&lt;/button&gt;
+&lt;/usli-input-group&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Prepend and append together</h2>
+    <div class="example-box">
+      <usli-input-group>
+        <span usliPrepend class="input-group-text">$</span>
+        <input class="form-control" />
+        <span usliAppend class="input-group-text">.00</span>
+      </usli-input-group>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-input-group&gt;
+  &lt;span usliPrepend class="input-group-text"&gt;$&lt;/span&gt;
+  &lt;input class="form-control" /&gt;
+  &lt;span usliAppend class="input-group-text"&gt;.00&lt;/span&gt;
+&lt;/usli-input-group&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Inputs</h2>
+    <table class="api-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">size</span></td>
+          <td><span class="prop-type">'sm' | 'lg' | undefined</span></td>
+          <td><span class="prop-default">undefined</span></td>
+          <td>Sizes every projected control.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

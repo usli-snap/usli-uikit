@@ -1,10 +1,10 @@
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef,
-  OnInit, inject, input, signal,
+  inject, input, signal,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { USLI_FORM_CONTROL, type UsliFormControl } from '../form-control.token';
+import { ControlEventsForwarder, bindSelfAsValueAccessor } from '../../../shared/cva-self-binding';
 
 @Component({
   selector: 'usli-textarea',
@@ -14,7 +14,7 @@ import { USLI_FORM_CONTROL, type UsliFormControl } from '../form-control.token';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: USLI_FORM_CONTROL, useExisting: UsliTextareaComponent }],
 })
-export class UsliTextareaComponent implements ControlValueAccessor, UsliFormControl, OnInit {
+export class UsliTextareaComponent implements ControlValueAccessor, UsliFormControl {
   placeholder = input<string>('');
   rows = input<number>(3);
   errorMessage = input<string | undefined>();
@@ -29,13 +29,10 @@ export class UsliTextareaComponent implements ControlValueAccessor, UsliFormCont
   private onChange: (v: string) => void = () => {};
   onTouched: () => void = () => {};
 
-  ngOnInit(): void {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
-      this.ngControl.statusChanges
-        ?.pipe(takeUntilDestroyed(this.destroyRef))
-        .subscribe(() => this.cdr.markForCheck());
-    }
+  private readonly controlEvents = new ControlEventsForwarder(this.ngControl, this.cdr, this.destroyRef);
+
+  constructor() {
+    bindSelfAsValueAccessor(this.ngControl, this);
   }
 
   protected hasError(): boolean {
@@ -48,7 +45,10 @@ export class UsliTextareaComponent implements ControlValueAccessor, UsliFormCont
     this.onChange(v);
   }
 
-  writeValue(value: string): void { this.value.set(value ?? ''); }
+  writeValue(value: string): void {
+    this.value.set(value ?? '');
+    this.controlEvents.sync();
+  }
   registerOnChange(fn: (v: string) => void): void { this.onChange = fn; }
   registerOnTouched(fn: () => void): void { this.onTouched = fn; }
   setDisabledState(isDisabled: boolean): void { this.isDisabled.set(isDisabled); }

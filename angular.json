@@ -43,7 +43,8 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/ui-sdk/src/lib/usli-palette.scss",
-              "projects/ui-sdk/src/lib/usli-typography.scss"
+              "projects/ui-sdk/src/lib/usli-typography.scss",
+              "projects/ui-sdk/src/lib/usli-tooltip.scss"
             ],
             "compodoc": true,
             "compodocArgs": [
@@ -63,7 +64,8 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/ui-sdk/src/lib/usli-palette.scss",
-              "projects/ui-sdk/src/lib/usli-typography.scss"
+              "projects/ui-sdk/src/lib/usli-typography.scss",
+              "projects/ui-sdk/src/lib/usli-tooltip.scss"
             ],
             "compodoc": true,
             "compodocArgs": [

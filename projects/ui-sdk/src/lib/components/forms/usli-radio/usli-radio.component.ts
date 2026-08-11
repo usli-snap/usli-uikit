@@ -12,7 +12,7 @@ export class UsliRadioComponent {
   value = input.required<unknown>();
   label = input.required<string>();
 
-  private readonly group = inject(USLI_RADIO_GROUP);
+  protected readonly group = inject(USLI_RADIO_GROUP);
 
   protected isSelected = computed(() => this.group.value() === this.value());
 

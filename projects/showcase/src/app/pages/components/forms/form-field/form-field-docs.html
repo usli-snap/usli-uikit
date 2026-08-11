@@ -203,6 +203,52 @@ control = new FormControl('', [
 
   <hr class="divider" />
 
+  <!-- Hint text -->
+  <section class="section">
+    <h2 class="section__title">Hint text</h2>
+    <p class="section__desc">
+      Set hint for helper text below the control. It's hidden automatically
+      while a validation error is showing, so the two never compete for the
+      same space.
+    </p>
+    <div class="example-box">
+      <usli-form-field label="Username" hint="Choose something memorable — you can't change it later.">
+        <usli-input [formControl]="hintControl" placeholder="Enter username" />
+      </usli-form-field>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-form-field label="Username" hint="Choose something memorable — you can't change it later."&gt;
+  &lt;usli-input [formControl]="usernameControl" placeholder="Enter username" /&gt;
+&lt;/usli-form-field&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Floating label -->
+  <section class="section">
+    <h2 class="section__title">Floating label</h2>
+    <p class="section__desc">
+      Set [floating]="true" for a Bootstrap floating label — the control
+      renders before the label in DOM order. The projected control needs a
+      non-empty placeholder (even a single space) since Bootstrap's
+      floating-label CSS keys off :placeholder-shown. Not meaningful for
+      checkbox/radio controls.
+    </p>
+    <div class="example-box">
+      <usli-form-field label="Email address" [floating]="true">
+        <usli-input [formControl]="floatingControl" type="email" placeholder=" " />
+      </usli-form-field>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-form-field label="Email address" [floating]="true"&gt;
+  &lt;usli-input [formControl]="emailControl" type="email" placeholder=" " /&gt;
+&lt;/usli-form-field&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
   <!-- API -->
   <section class="section">
     <h2 class="section__title">API</h2>
@@ -220,21 +266,21 @@ control = new FormControl('', [
       <tbody>
         <tr>
           <td><span class="prop-name">label</span></td>
-          <td><span class="prop-type">string</span></td>
-          <td><span class="prop-default">''</span></td>
-          <td>Label text shown above the form control.</td>
+          <td><span class="prop-type">string | undefined</span></td>
+          <td><span class="prop-default">undefined</span></td>
+          <td>Label text shown for the form control.</td>
         </tr>
         <tr>
-          <td><span class="prop-name">required</span></td>
-          <td><span class="prop-type">boolean</span></td>
-          <td><span class="prop-default">false</span></td>
-          <td>Shows asterisk (*) on label if true.</td>
+          <td><span class="prop-name">hint</span></td>
+          <td><span class="prop-type">string | undefined</span></td>
+          <td><span class="prop-default">undefined</span></td>
+          <td>Helper text shown below the control. Hidden while an error is showing.</td>
         </tr>
         <tr>
-          <td><span class="prop-name">disabled</span></td>
+          <td><span class="prop-name">floating</span></td>
           <td><span class="prop-type">boolean</span></td>
           <td><span class="prop-default">false</span></td>
-          <td>Disables the wrapped form control.</td>
+          <td>Renders as a Bootstrap floating label (control before label in DOM order).</td>
         </tr>
       </tbody>
     </table>

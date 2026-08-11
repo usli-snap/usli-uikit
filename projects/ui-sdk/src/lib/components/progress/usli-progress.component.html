@@ -1,0 +1,12 @@
+<div class="usli-progress progress">
+  <div
+    [class]="barClasses()"
+    role="progressbar"
+    [style.width.%]="percent()"
+    [attr.aria-valuenow]="value()"
+    [attr.aria-valuemin]="0"
+    [attr.aria-valuemax]="max()"
+  >
+    {{ barText() }}
+  </div>
+</div>

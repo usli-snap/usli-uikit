@@ -1,7 +1,14 @@
-@if (label()) {
-  <label class="form-label">{{ label() }}</label>
-}
-<ng-content />
+<div [class.form-floating]="floating()">
+  @if (!floating() && label()) {
+    <label class="form-label">{{ label() }}</label>
+  }
+  <ng-content />
+  @if (floating() && label()) {
+    <label class="form-label">{{ label() }}</label>
+  }
+</div>
 @if (showError()) {
   <div class="invalid-feedback d-block">{{ errorText() }}</div>
+} @else if (hint()) {
+  <div class="form-text">{{ hint() }}</div>
 }

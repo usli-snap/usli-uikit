@@ -1,0 +1,25 @@
+@use '../../docs-page';
+
+.scrollspy-demo {
+  display: flex;
+  gap: 1rem;
+}
+
+.scrollspy-nav {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.scrollspy-content {
+  height: 240px;
+  overflow-y: auto;
+  border: 1px solid var(--gray-300, #e0e0e0);
+  border-radius: 0.375rem;
+  flex: 1;
+}
+
+.scrollspy-section {
+  height: 200px;
+  padding: 1rem;
+  border-bottom: 1px solid var(--gray-200, #eeeeee);
+}

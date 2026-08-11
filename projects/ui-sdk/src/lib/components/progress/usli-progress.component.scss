@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+.progress-bar-usli-primary {
+  background-color: var(--blue-500, #00338e);
+}
+
+.progress-bar-usli-secondary {
+  background-color: var(--blue-300, #4d78c9);
+}
+
+.progress-bar-usli-tertiary {
+  background-color: var(--gray-400, #bdbdbd);
+}
+
+.progress-bar-usli-error {
+  background-color: var(--error-500, #b10505);
+}
+
+.progress-bar-usli-warning {
+  background-color: var(--warning-500, #efc100);
+}
+
+.progress-bar-usli-info {
+  background-color: var(--info-600, #4996e3);
+}
+
+.progress-bar-usli-success {
+  background-color: var(--success-500, #14661a);
+}

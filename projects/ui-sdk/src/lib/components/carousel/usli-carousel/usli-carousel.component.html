@@ -1,0 +1,36 @@
+<div
+  class="usli-carousel carousel slide"
+  (mouseenter)="onPause()"
+  (mouseleave)="onResume()"
+  (focusin)="onPause()"
+  (focusout)="onResume()"
+>
+  @if (showIndicators() && items().length > 1) {
+    <div class="carousel-indicators">
+      @for (item of items(); track item; let i = $index) {
+        <button
+          type="button"
+          [class.active]="i === activeIndex()"
+          [attr.aria-current]="i === activeIndex() ? 'true' : null"
+          [attr.aria-label]="'Slide ' + (i + 1)"
+          (click)="goTo(i)"
+        ></button>
+      }
+    </div>
+  }
+
+  <div class="carousel-inner">
+    <ng-content />
+  </div>
+
+  @if (showControls() && items().length > 1) {
+    <button class="carousel-control-prev" type="button" (click)="prev()">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" (click)="next()">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  }
+</div>

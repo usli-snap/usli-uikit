@@ -1,0 +1,33 @@
+<nav class="usli-pagination" aria-label="Pagination">
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="disabled() || page() === 1">
+      <button type="button" class="page-link" [disabled]="disabled() || page() === 1" (click)="goTo(page() - 1)" aria-label="Previous page">
+        &laquo;
+      </button>
+    </li>
+
+    @for (item of items(); track $index) {
+      @if (item === 'ellipsis') {
+        <li class="page-item disabled"><span class="page-link">&hellip;</span></li>
+      } @else {
+        <li class="page-item" [class.active]="item === page()">
+          <button
+            type="button"
+            class="page-link"
+            [disabled]="disabled()"
+            [attr.aria-current]="item === page() ? 'page' : null"
+            (click)="goTo(item)"
+          >
+            {{ item }}
+          </button>
+        </li>
+      }
+    }
+
+    <li class="page-item" [class.disabled]="disabled() || page() === totalPages()">
+      <button type="button" class="page-link" [disabled]="disabled() || page() === totalPages()" (click)="goTo(page() + 1)" aria-label="Next page">
+        &raquo;
+      </button>
+    </li>
+  </ul>
+</nav>

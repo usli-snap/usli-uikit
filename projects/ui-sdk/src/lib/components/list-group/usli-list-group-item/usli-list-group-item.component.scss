@@ -1,0 +1,37 @@
+:host {
+  display: contents;
+}
+
+li {
+  list-style: none;
+}
+
+.list-group-item-usli-primary {
+  --bs-list-group-color: var(--blue-700, #00216a);
+  --bs-list-group-bg: var(--blue-50, #e3e9f6);
+}
+
+.list-group-item-usli-secondary {
+  --bs-list-group-color: var(--blue-700, #00216a);
+  --bs-list-group-bg: var(--blue-50, #e3e9f6);
+}
+
+.list-group-item-usli-error {
+  --bs-list-group-color: var(--error-700, #7a0303);
+  --bs-list-group-bg: var(--error-50, #fff0f0);
+}
+
+.list-group-item-usli-warning {
+  --bs-list-group-color: var(--warning-900, #4d3c00);
+  --bs-list-group-bg: var(--warning-50, #fffde7);
+}
+
+.list-group-item-usli-info {
+  --bs-list-group-color: var(--info-700, #2d6bb0);
+  --bs-list-group-bg: var(--info-50, #e8f4ff);
+}
+
+.list-group-item-usli-success {
+  --bs-list-group-color: var(--success-700, #0c4710);
+  --bs-list-group-bg: var(--success-50, #edfaee);
+}

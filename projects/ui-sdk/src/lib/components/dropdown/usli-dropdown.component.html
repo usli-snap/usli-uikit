@@ -1,0 +1,10 @@
+<div class="usli-dropdown dropdown">
+  <details #details>
+    <summary [class]="buttonClasses()" [class.disabled]="disabled()" (click)="onSummaryClick($event)">
+      <ng-content select="[usliDropdownLabel]">{{ label() }}</ng-content>
+    </summary>
+    <ul [class]="menuClasses()" (click)="onMenuClick($event)">
+      <ng-content />
+    </ul>
+  </details>
+</div>

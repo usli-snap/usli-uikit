@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.usli-range {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.usli-range__value {
+  font-variant-numeric: tabular-nums;
+  min-width: 2.5rem;
+  text-align: right;
+}

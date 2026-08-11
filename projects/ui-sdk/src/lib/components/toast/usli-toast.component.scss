@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+
+.usli-toast {
+  font-family: var(--font-roboto, 'Roboto', sans-serif);
+}
+
+// Bootstrap's .toast has no built-in color-variant system (unlike .alert) —
+// apply background/border/color directly, same palette as usli-alert.
+.alert-usli-error {
+  background-color: var(--error-50, #fff0f0);
+  border-color: var(--error-200, #f09090);
+  color: var(--error-700, #770303);
+}
+
+.alert-usli-warning {
+  background-color: var(--warning-50, #fffde7);
+  border-color: var(--warning-200, #fff59d);
+  color: var(--warning-900, #4d3c00);
+}
+
+.alert-usli-info {
+  background-color: var(--info-50, #e8f4ff);
+  border-color: var(--info-200, #90c8fe);
+  color: var(--info-800, #235aa0);
+}
+
+.alert-usli-success {
+  background-color: var(--success-50, #edfaee);
+  border-color: var(--success-200, #88d58b);
+  color: var(--success-700, #0d4411);
+}

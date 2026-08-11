@@ -1,0 +1,17 @@
+@use '../../docs-page';
+
+.carousel-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  color: #fff;
+  font-size: 1.5rem;
+
+  &--primary { background: var(--blue-500, #00338e); }
+  &--secondary { background: var(--blue-300, #4d78c9); }
+  &--success { background: var(--success-500, #14661a); }
+  &--error { background: var(--error-500, #b10505); }
+  &--warning { background: var(--warning-500, #efc100); }
+  &--info { background: var(--info-600, #4996e3); }
+}

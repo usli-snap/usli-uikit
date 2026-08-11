@@ -1,0 +1,25 @@
+<dialog
+  #dialogEl
+  [id]="dialogId()"
+  [class]="dialogClasses()"
+  (close)="dialog.onClose()"
+  (cancel)="dialog.onCancel($event)"
+  (click)="dialog.onBackdropClick($event)"
+>
+  <div class="modal-content">
+    @if (title() || dismissible()) {
+      <div class="modal-header">
+        @if (title()) {
+          <h5 class="modal-title">{{ title() }}</h5>
+        }
+        @if (dismissible()) {
+          <button type="button" class="btn-close" [attr.commandfor]="dialogId()" command="close" aria-label="Close"></button>
+        }
+      </div>
+    }
+    <div class="modal-body">
+      <ng-content />
+    </div>
+    <ng-content select="[usliModalFooter]" />
+  </div>
+</dialog>

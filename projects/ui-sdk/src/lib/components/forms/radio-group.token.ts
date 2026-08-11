@@ -2,6 +2,7 @@ import { InjectionToken, Signal } from '@angular/core';
 
 export interface UsliRadioGroupControl {
   readonly value: Signal<unknown>;
+  readonly hasError: Signal<boolean>;
   select(value: unknown): void;
   onTouched(): void;
 }

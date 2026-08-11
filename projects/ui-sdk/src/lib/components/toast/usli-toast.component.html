@@ -1,0 +1,17 @@
+@if (visible()) {
+  <div [class]="classes()" role="status" aria-live="polite" aria-atomic="true">
+    @if (title() || dismissible()) {
+      <div class="toast-header">
+        @if (title()) {
+          <strong class="me-auto">{{ title() }}</strong>
+        }
+        @if (dismissible()) {
+          <button type="button" class="btn-close" aria-label="Close" (click)="dismiss()"></button>
+        }
+      </div>
+    }
+    <div class="toast-body">
+      <ng-content />
+    </div>
+  </div>
+}

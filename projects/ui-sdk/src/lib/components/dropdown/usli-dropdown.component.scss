@@ -1,0 +1,23 @@
+:host {
+  display: inline-block;
+}
+
+summary {
+  list-style: none;
+  cursor: pointer;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+}
+
+// <details> content is natively hidden/shown — only override Bootstrap's
+// default `.dropdown-menu { display: none }` so it shows once open.
+details[open] > .dropdown-menu {
+  display: block;
+}

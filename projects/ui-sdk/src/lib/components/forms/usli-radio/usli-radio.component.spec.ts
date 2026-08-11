@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, WritableSignal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { USLI_RADIO_GROUP, type UsliRadioGroupControl } from '../radio-group.token';
 import { UsliRadioComponent } from './usli-radio.component';
@@ -8,10 +8,13 @@ import { vi } from 'vitest';
 describe('UsliRadioComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
   let mockGroup: UsliRadioGroupControl;
+  let hasErrorSignal: WritableSignal<boolean>;
 
   beforeEach(async () => {
+    hasErrorSignal = signal(false);
     mockGroup = {
       value: signal(''),
+      hasError: hasErrorSignal,
       select: vi.fn(),
       onTouched: vi.fn(),
     };
@@ -38,6 +41,16 @@ describe('UsliRadioComponent', () => {
   it('calls group.onTouched when blurred', () => {
     fixture.nativeElement.querySelector('input').dispatchEvent(new Event('blur'));
     expect(mockGroup.onTouched).toHaveBeenCalled();
+  });
+
+  it('has no is-invalid class when the group reports no error', () => {
+    expect(fixture.nativeElement.querySelector('input').classList.contains('is-invalid')).toBe(false);
+  });
+
+  it('adds is-invalid when the group reports an error', () => {
+    hasErrorSignal.set(true);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('input').classList.contains('is-invalid')).toBe(true);
   });
 });
 

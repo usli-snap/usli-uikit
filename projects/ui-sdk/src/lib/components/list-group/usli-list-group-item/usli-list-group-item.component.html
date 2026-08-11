@@ -1,0 +1,15 @@
+@if (href()) {
+  <li>
+    <a
+      [class]="classes()"
+      [attr.href]="disabled() ? null : href()"
+      [attr.aria-disabled]="disabled() ? true : null"
+      [attr.tabindex]="disabled() ? -1 : null"
+      (click)="onClick()"
+    >
+      <ng-content />
+    </a>
+  </li>
+} @else {
+  <li [class]="classes()"><ng-content /></li>
+}

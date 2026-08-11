@@ -1,0 +1,93 @@
+<div class="page">
+
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Components</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Dropdown</span>
+    </nav>
+    <h1 class="page-title">Dropdown</h1>
+    <p class="page-lead">
+      Built on native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> —
+      open/close needs no JavaScript. A small script closes the menu on an
+      outside click, Escape, or item selection, matching what users expect
+      from a dropdown.
+    </p>
+  </header>
+
+  <section class="section">
+    <h2 class="section__title">Basic usage</h2>
+    <div class="example-box">
+      <usli-dropdown label="Actions">
+        <a class="dropdown-item" href="#">Edit</a>
+        <a class="dropdown-item" href="#">Duplicate</a>
+        <hr class="dropdown-divider" />
+        <a class="dropdown-item" href="#">Delete</a>
+      </usli-dropdown>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-dropdown label="Actions"&gt;
+  &lt;a class="dropdown-item" href="#"&gt;Edit&lt;/a&gt;
+  &lt;a class="dropdown-item" href="#"&gt;Duplicate&lt;/a&gt;
+  &lt;hr class="dropdown-divider" /&gt;
+  &lt;a class="dropdown-item" href="#"&gt;Delete&lt;/a&gt;
+&lt;/usli-dropdown&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Alignment and variant</h2>
+    <div class="example-box">
+      <usli-dropdown label="Right-aligned" variant="primary" align="end">
+        <a class="dropdown-item" href="#">One</a>
+        <a class="dropdown-item" href="#">Two</a>
+      </usli-dropdown>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-dropdown label="Right-aligned" variant="primary" align="end"&gt;
+  &lt;a class="dropdown-item" href="#"&gt;One&lt;/a&gt;
+  &lt;a class="dropdown-item" href="#"&gt;Two&lt;/a&gt;
+&lt;/usli-dropdown&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Inputs</h2>
+    <table class="api-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">label</span></td>
+          <td><span class="prop-type">string</span></td>
+          <td><span class="prop-default">'Dropdown'</span></td>
+          <td>Trigger button text — used when no content is projected into the toggle.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">variant</span></td>
+          <td><span class="prop-type">ButtonVariant</span></td>
+          <td><span class="prop-default">'secondary'</span></td>
+          <td>Trigger button color variant.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">align</span></td>
+          <td><span class="prop-type">'start' | 'end'</span></td>
+          <td><span class="prop-default">'start'</span></td>
+          <td>Menu alignment relative to the trigger.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">disabled</span></td>
+          <td><span class="prop-type">boolean</span></td>
+          <td><span class="prop-default">false</span></td>
+          <td>Disables the trigger.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

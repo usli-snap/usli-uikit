@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, OnInit, inject, input, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, computed, inject, input, signal } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { USLI_FORM_CONTROL, type UsliFormControl } from '../form-control.token';
 import { USLI_RADIO_GROUP, type UsliRadioGroupControl } from '../radio-group.token';
+import { ControlEventsForwarder, bindSelfAsValueAccessor } from '../../../shared/cva-self-binding';
 
 @Component({
   selector: 'usli-radio-group',
@@ -15,7 +15,7 @@ import { USLI_RADIO_GROUP, type UsliRadioGroupControl } from '../radio-group.tok
     { provide: USLI_RADIO_GROUP, useExisting: UsliRadioGroupComponent },
   ],
 })
-export class UsliRadioGroupComponent implements ControlValueAccessor, UsliFormControl, UsliRadioGroupControl, OnInit {
+export class UsliRadioGroupComponent implements ControlValueAccessor, UsliFormControl, UsliRadioGroupControl {
   errorMessage = input<string | undefined>();
 
   readonly ngControl = inject(NgControl, { optional: true, self: true });
@@ -28,11 +28,19 @@ export class UsliRadioGroupComponent implements ControlValueAccessor, UsliFormCo
   private onChange: (v: unknown) => void = () => {};
   onTouched: () => void = () => {};
 
-  ngOnInit(): void {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
-      this.ngControl.statusChanges?.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.cdr.markForCheck());
-    }
+  // ngControl.invalid/.touched aren't signals, so a plain computed() over them
+  // wouldn't know to recompute when they change — this signal is kept in sync
+  // imperatively by the ControlEventsForwarder's onEvent callback below, and
+  // hasError composes it with the (genuinely signal-backed) errorMessage input.
+  private readonly ngControlHasError = signal(false);
+  readonly hasError = computed(() => !!this.errorMessage() || this.ngControlHasError());
+
+  private readonly controlEvents = new ControlEventsForwarder(this.ngControl, this.cdr, this.destroyRef, () =>
+    this.ngControlHasError.set(!!this.ngControl?.invalid && !!this.ngControl?.touched),
+  );
+
+  constructor() {
+    bindSelfAsValueAccessor(this.ngControl, this);
   }
 
   select(val: unknown): void {
@@ -40,11 +48,10 @@ export class UsliRadioGroupComponent implements ControlValueAccessor, UsliFormCo
     this.onChange(val);
   }
 
-  protected hasError(): boolean {
-    return !!this.errorMessage() || (!!this.ngControl?.invalid && !!this.ngControl?.touched);
+  writeValue(value: unknown): void {
+    this.value.set(value ?? null);
+    this.controlEvents.sync();
   }
-
-  writeValue(value: unknown): void { this.value.set(value ?? null); }
   registerOnChange(fn: (v: unknown) => void): void { this.onChange = fn; }
   registerOnTouched(fn: () => void): void { this.onTouched = fn; }
   setDisabledState(isDisabled: boolean): void { this.isDisabled.set(isDisabled); }

@@ -1,0 +1,37 @@
+:host {
+  display: contents;
+}
+
+// .modal-content already provides the card look (border, radius, shadow,
+// background) — strip the native <dialog> UA-stylesheet chrome around it.
+.usli-modal {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  // Fade/scale in on open, out on close — no JS-driven animation needed.
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease,
+    overlay 150ms ease allow-discrete,
+    display 150ms ease allow-discrete;
+
+  &[open] {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @starting-style {
+    &[open] {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<div class="usli-range">
+  <input
+    type="range"
+    class="form-range"
+    [class.is-invalid]="hasError()"
+    [min]="min()"
+    [max]="max()"
+    [step]="step()"
+    [disabled]="isDisabled()"
+    [value]="value()"
+    (input)="onInput($event)"
+    (blur)="onTouched()"
+  />
+  @if (showValue()) {
+    <span class="usli-range__value">{{ value() }}</span>
+  }
+</div>
+@if (errorMessage()) {
+  <div class="invalid-feedback d-block">{{ errorMessage() }}</div>
+}

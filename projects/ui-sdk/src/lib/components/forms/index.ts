@@ -7,3 +7,5 @@ export * from './usli-checkbox/usli-checkbox.component';
 export * from './usli-radio-group/usli-radio-group.component';
 export * from './usli-radio/usli-radio.component';
 export * from './usli-form-field/usli-form-field.component';
+export * from './usli-input-group/usli-input-group.component';
+export * from './usli-range/usli-range.component';

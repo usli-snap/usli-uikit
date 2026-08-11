@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, OnInit, inject, input, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, input, signal } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { USLI_FORM_CONTROL, type UsliFormControl } from '../form-control.token';
+import { ControlEventsForwarder, bindSelfAsValueAccessor } from '../../../shared/cva-self-binding';
 
 @Component({
   selector: 'usli-checkbox',
@@ -11,7 +11,7 @@ import { USLI_FORM_CONTROL, type UsliFormControl } from '../form-control.token';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: USLI_FORM_CONTROL, useExisting: UsliCheckboxComponent }],
 })
-export class UsliCheckboxComponent implements ControlValueAccessor, UsliFormControl, OnInit {
+export class UsliCheckboxComponent implements ControlValueAccessor, UsliFormControl {
   label = input<string | undefined>();
   errorMessage = input<string | undefined>();
 
@@ -25,11 +25,10 @@ export class UsliCheckboxComponent implements ControlValueAccessor, UsliFormCont
   private onChange: (v: boolean) => void = () => {};
   onTouched: () => void = () => {};
 
-  ngOnInit(): void {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
-      this.ngControl.statusChanges?.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.cdr.markForCheck());
-    }
+  private readonly controlEvents = new ControlEventsForwarder(this.ngControl, this.cdr, this.destroyRef);
+
+  constructor() {
+    bindSelfAsValueAccessor(this.ngControl, this);
   }
 
   protected hasError(): boolean {
@@ -42,7 +41,10 @@ export class UsliCheckboxComponent implements ControlValueAccessor, UsliFormCont
     this.onChange(v);
   }
 
-  writeValue(value: boolean): void { this.checked.set(!!value); }
+  writeValue(value: boolean): void {
+    this.checked.set(!!value);
+    this.controlEvents.sync();
+  }
   registerOnChange(fn: (v: boolean) => void): void { this.onChange = fn; }
   registerOnTouched(fn: () => void): void { this.onTouched = fn; }
   setDisabledState(isDisabled: boolean): void { this.isDisabled.set(isDisabled); }

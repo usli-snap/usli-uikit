@@ -2,6 +2,7 @@
   <input
     class="form-check-input"
     type="radio"
+    [class.is-invalid]="group.hasError()"
     [checked]="isSelected()"
     (change)="select()"
     (blur)="onBlur()"

@@ -1,0 +1,112 @@
+<div class="page">
+
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Components</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Toast</span>
+    </nav>
+    <h1 class="page-title">Toast</h1>
+    <p class="page-lead">
+      A brief, non-blocking notification with an optional auto-dismiss timer.
+      Wrap one or more toasts in your own positioned
+      <code>.toast-container</code> — there's no built-in stacking service.
+    </p>
+  </header>
+
+  <section class="section">
+    <h2 class="section__title">Basic usage</h2>
+    <div class="example-box">
+      <div class="toast-container position-static">
+        <usli-toast title="Notification" [autohide]="false">
+          Your changes have been saved.
+        </usli-toast>
+      </div>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;div class="toast-container position-fixed bottom-0 end-0 p-3"&gt;
+  &lt;usli-toast title="Notification" [autohide]="false"&gt;
+    Your changes have been saved.
+  &lt;/usli-toast&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Variant and auto-hide</h2>
+    <div class="example-box">
+      <div class="toast-container position-static">
+        <usli-toast variant="success" title="Saved" [autohide]="false">
+          Operation completed successfully.
+        </usli-toast>
+      </div>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-toast variant="success" title="Saved" [delay]="3000"&gt;
+  Operation completed successfully.
+&lt;/usli-toast&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Inputs</h2>
+    <table class="api-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">variant</span></td>
+          <td><span class="prop-type">'error' | 'warning' | 'info' | 'success'</span></td>
+          <td><span class="prop-default">'info'</span></td>
+          <td>Semantic color variant.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">title</span></td>
+          <td><span class="prop-type">string | undefined</span></td>
+          <td><span class="prop-default">undefined</span></td>
+          <td>Optional heading rendered above the projected content.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">autohide</span></td>
+          <td><span class="prop-type">boolean</span></td>
+          <td><span class="prop-default">true</span></td>
+          <td>Automatically dismisses the toast after delay ms.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">delay</span></td>
+          <td><span class="prop-type">number</span></td>
+          <td><span class="prop-default">5000</span></td>
+          <td>Autohide delay in milliseconds.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">dismissible</span></td>
+          <td><span class="prop-type">boolean</span></td>
+          <td><span class="prop-default">true</span></td>
+          <td>Shows a close button that hides the toast.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2 class="section__title">Outputs</h2>
+    <table class="api-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">dismissed</span></td>
+          <td><span class="prop-type">OutputEmitterRef&lt;void&gt;</span></td>
+          <td>Emitted when the toast hides, whether by timer or the close button.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

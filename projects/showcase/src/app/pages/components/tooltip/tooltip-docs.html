@@ -1,0 +1,75 @@
+<div class="page">
+
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Components</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Tooltip</span>
+    </nav>
+    <h1 class="page-title">Tooltip</h1>
+    <p class="page-lead">
+      A pure-CSS tooltip directive — no JavaScript, no positioning library.
+      Plain text only, static placement, no collision detection. For rich
+      content or smart positioning, use Popover instead.
+    </p>
+    <p class="page-lead">
+      Requires the <code>usli-tooltip</code> global stylesheet to be imported
+      once in your app's styles (a directive has no styleUrl of its own):
+      <code>@use 'ui-sdk/src/lib/usli-tooltip';</code>
+    </p>
+  </header>
+
+  <section class="section">
+    <h2 class="section__title">Basic usage</h2>
+    <p class="section__desc">
+      Apply <code>usliTooltip</code> to any element with the tooltip text.
+    </p>
+    <div class="example-box">
+      <usli-button usliTooltip="Saved to your library">Hover me</usli-button>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-button usliTooltip="Saved to your library"&gt;Hover me&lt;/usli-button&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Placement</h2>
+    <div class="example-box" style="display:flex; gap:2rem; padding: 2rem;">
+      <usli-button usliTooltip="Top tooltip" tooltipPlacement="top">Top</usli-button>
+      <usli-button usliTooltip="Bottom tooltip" tooltipPlacement="bottom">Bottom</usli-button>
+      <usli-button usliTooltip="Start tooltip" tooltipPlacement="start">Start</usli-button>
+      <usli-button usliTooltip="End tooltip" tooltipPlacement="end">End</usli-button>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-button usliTooltip="Bottom tooltip" tooltipPlacement="bottom"&gt;Bottom&lt;/usli-button&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Inputs</h2>
+    <table class="api-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">usliTooltip</span></td>
+          <td><span class="prop-type">string</span></td>
+          <td><span class="prop-default">required</span></td>
+          <td>Tooltip text.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">tooltipPlacement</span></td>
+          <td><span class="prop-type">'top' | 'bottom' | 'start' | 'end'</span></td>
+          <td><span class="prop-default">'top'</span></td>
+          <td>Which side the tooltip renders on.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

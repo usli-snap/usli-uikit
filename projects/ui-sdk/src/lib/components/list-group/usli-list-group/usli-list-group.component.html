@@ -1,0 +1,5 @@
+@if (numbered()) {
+  <ol [class]="classes()"><ng-content /></ol>
+} @else {
+  <ul [class]="classes()"><ng-content /></ul>
+}

@@ -1,0 +1,22 @@
+<dialog
+  #dialogEl
+  [id]="dialogId()"
+  [class]="dialogClasses()"
+  (close)="dialog.onClose()"
+  (cancel)="dialog.onCancel($event)"
+  (click)="dialog.onBackdropClick($event)"
+>
+  @if (title() || dismissible()) {
+    <div class="offcanvas-header">
+      @if (title()) {
+        <h5 class="offcanvas-title">{{ title() }}</h5>
+      }
+      @if (dismissible()) {
+        <button type="button" class="btn-close" [attr.commandfor]="dialogId()" command="close" aria-label="Close"></button>
+      }
+    </div>
+  }
+  <div class="offcanvas-body">
+    <ng-content />
+  </div>
+</dialog>

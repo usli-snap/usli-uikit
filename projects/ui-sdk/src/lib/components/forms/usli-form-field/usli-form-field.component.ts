@@ -21,12 +21,26 @@ const ERROR_MESSAGES: Record<string, string> = {
 export class UsliFormFieldComponent implements AfterContentInit {
   label = input<string | undefined>();
 
+  /** Helper text shown below the control. Hidden while an error is showing. */
+  hint = input<string | undefined>();
+
+  /**
+   * Renders as a Bootstrap floating label — the control before the label in
+   * DOM order, with `form-floating` on the wrapper. Requires the projected
+   * control to have a non-empty placeholder (even `" "`) — Bootstrap's
+   * floating-label CSS keys off `:placeholder-shown`. Not meaningful for
+   * checkbox/radio controls.
+   */
+  floating = input(false);
+
   private readonly control = contentChild(USLI_FORM_CONTROL);
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly destroyRef = inject(DestroyRef);
 
   ngAfterContentInit(): void {
-    this.control()?.ngControl?.statusChanges
+    // events (not statusChanges) — statusChanges alone misses touched-only
+    // changes like markAsTouched(), which is exactly what error display depends on.
+    this.control()?.ngControl?.control?.events
       ?.pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => this.cdr.markForCheck());
   }

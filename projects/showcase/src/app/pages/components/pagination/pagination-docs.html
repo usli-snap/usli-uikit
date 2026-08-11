@@ -1,0 +1,101 @@
+<div class="page">
+
+  <header class="page-header">
+    <nav class="breadcrumb">
+      <span>Components</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Pagination</span>
+    </nav>
+    <h1 class="page-title">Pagination</h1>
+    <p class="page-lead">
+      Page navigation with automatic ellipsis collapsing for large page counts.
+      Bind <code>[(page)]</code> to control it from outside.
+    </p>
+  </header>
+
+  <section class="section">
+    <h2 class="section__title">Basic usage</h2>
+    <div class="example-box">
+      <usli-pagination [totalPages]="10" [(page)]="page"></usli-pagination>
+      <p>Current page: {{ page() }}</p>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-pagination [totalPages]="10" [(page)]="page"&gt;&lt;/usli-pagination&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Many pages</h2>
+    <p class="section__desc">
+      Distant pages collapse behind an ellipsis. First and last pages always stay visible.
+    </p>
+    <div class="example-box">
+      <usli-pagination [totalPages]="50" [page]="25"></usli-pagination>
+    </div>
+    <div class="code-block">
+      <pre><code>&lt;usli-pagination [totalPages]="50" [page]="25"&gt;&lt;/usli-pagination&gt;</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="section">
+    <h2 class="section__title">Inputs</h2>
+    <table class="api-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">totalPages</span></td>
+          <td><span class="prop-type">number</span></td>
+          <td><span class="prop-default">required</span></td>
+          <td>Total number of pages.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">page</span></td>
+          <td><span class="prop-type">number</span></td>
+          <td><span class="prop-default">1</span></td>
+          <td>Current page (1-indexed). Two-way bindable via [(page)].</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">siblingCount</span></td>
+          <td><span class="prop-type">number</span></td>
+          <td><span class="prop-default">1</span></td>
+          <td>Number of pages shown on each side of the current page.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">boundaryCount</span></td>
+          <td><span class="prop-type">number</span></td>
+          <td><span class="prop-default">1</span></td>
+          <td>Number of pages always shown at the start and end.</td>
+        </tr>
+        <tr>
+          <td><span class="prop-name">disabled</span></td>
+          <td><span class="prop-type">boolean</span></td>
+          <td><span class="prop-default">false</span></td>
+          <td>Disables all interaction.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2 class="section__title">Outputs</h2>
+    <table class="api-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="prop-name">pageChange</span></td>
+          <td><span class="prop-type">OutputEmitterRef&lt;number&gt;</span></td>
+          <td>Emitted whenever the page changes (paired with the page model).</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
