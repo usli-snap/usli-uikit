@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   height: 220px;
-  color: #fff;
+  color: var(--white, #ffffff);
   font-size: 1.5rem;
 
   &--primary { background: var(--blue-500, #00338e); }

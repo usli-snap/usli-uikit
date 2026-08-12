@@ -3,7 +3,7 @@
 .section__subtitle {
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #424242;
+  color: var(--gray-800, #424242);
   margin: 0 0 0.75rem;
 
   &--spaced {
@@ -14,7 +14,7 @@
 .api-subtitle {
   font-size: 1rem;
   font-weight: 600;
-  color: #424242;
+  color: var(--gray-800, #424242);
   margin: 0 0 0.75rem;
 
   &--spaced {
@@ -30,7 +30,7 @@
   text-transform: uppercase;
   background: var(--blue-50, #e3e9f6);
   color: var(--blue-700, #00216a);
-  border: 1px solid var(--blue-200, #7a99d9);
+  border: 1px solid var(--blue-200, #809dd8);
   border-radius: 999px;
   padding: 0.15em 0.6em;
   vertical-align: middle;
@@ -118,7 +118,7 @@
 code {
   font-family: 'Roboto Mono', Consolas, monospace;
   font-size: 0.85em;
-  background: #f0f4f8;
+  background: var(--docs-inline-code-bg, #f0f4f8);
   color: var(--blue-700, #00216a);
   padding: 0.1em 0.35em;
   border-radius: 3px;

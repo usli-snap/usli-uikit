@@ -10,8 +10,8 @@
   top: 56px;
   height: calc(100vh - 56px);
   overflow-y: auto;
-  background: #f8f9fa;
-  border-right: 1px solid #e0e0e0;
+  background: var(--docs-sidebar-bg, #f8f9fa);
+  border-right: 1px solid var(--gray-300, #e0e0e0);
   padding: 1.5rem 0 2rem;
 }
 
@@ -27,7 +27,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #757575;
+  color: var(--gray-600, #757575);
 }
 
 .sidebar__list {
@@ -42,31 +42,31 @@
   font-family: var(--font-roboto, 'Roboto', sans-serif);
   font-size: 0.9rem;
   font-weight: 400;
-  color: #424242;
+  color: var(--gray-800, #424242);
   text-decoration: none;
   border-left: 3px solid transparent;
   transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
 
   &:hover {
     color: var(--blue-500, #00338e);
-    background: rgba(0, 51, 142, 0.05);
+    background: color-mix(in srgb, var(--blue-500, #00338e) 5%, transparent);
   }
 
   &--active {
     color: var(--blue-500, #00338e);
     font-weight: 600;
     border-left-color: var(--blue-500, #00338e);
-    background: rgba(0, 51, 142, 0.06);
+    background: color-mix(in srgb, var(--blue-500, #00338e) 6%, transparent);
   }
 
   &--group {
     font-weight: 600;
-    color: #212121;
+    color: var(--gray-900, #212121);
     padding: 0.5rem 1.25rem;
     cursor: default;
 
     &:hover {
-      color: #212121;
+      color: var(--gray-900, #212121);
       background: transparent;
     }
   }
@@ -74,7 +74,7 @@
   &--sub {
     padding-left: 2rem;
     font-size: 0.875rem;
-    color: #616161;
+    color: var(--gray-700, #616161);
 
     &:hover {
       color: var(--blue-500, #00338e);

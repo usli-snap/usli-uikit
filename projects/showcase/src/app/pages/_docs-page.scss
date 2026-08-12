@@ -73,7 +73,7 @@
 
 // Dark code block — directly below example-box
 .code-block {
-  background: #1e293b;
+  background: var(--docs-code-bg, #1e293b);
   border-radius: 0 0 var(--bs-border-radius, 0.375rem) var(--bs-border-radius, 0.375rem);
   overflow: auto;
 
@@ -86,7 +86,7 @@
 
   code {
     font-family: var(--bs-font-monospace, 'Roboto Mono', Consolas, monospace);
-    color: #e2e8f0;
+    color: var(--docs-code-text, #e2e8f0);
     background: none;
     padding: 0;
     font-size: inherit;
@@ -122,7 +122,7 @@
 
   .prop-type {
     font-family: var(--bs-font-monospace, Consolas, monospace);
-    color: #e67e22;
+    color: var(--docs-type-accent, #e67e22);
     font-size: 0.8rem;
   }
 

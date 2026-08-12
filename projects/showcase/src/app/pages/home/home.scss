@@ -9,7 +9,7 @@
   display: inline-block;
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
-  background: rgba(0, 51, 142, 0.08);
+  background: color-mix(in srgb, var(--blue-500, #00338e) 8%, transparent);
   color: var(--blue-500, #00338e);
   font-size: 0.75rem;
   font-weight: 600;
@@ -21,7 +21,7 @@
 .hero__title {
   font-size: var(--fs-h1, 3rem);
   font-weight: var(--fw-light, 300);
-  color: #212121;
+  color: var(--gray-900, #212121);
   margin: 0 0 1rem;
   line-height: 1.1;
 }
@@ -29,7 +29,7 @@
 .hero__subtitle {
   font-size: 1.125rem;
   font-weight: 400;
-  color: #616161;
+  color: var(--gray-700, #616161);
   line-height: 1.7;
   margin: 0 0 2rem;
 }
@@ -56,7 +56,7 @@
 
   &--primary {
     background: var(--blue-500, #00338e);
-    color: #fff;
+    color: var(--white, #ffffff);
     &:hover { background: var(--blue-600, #002c7c); }
   }
 
@@ -71,12 +71,12 @@
 .section__title {
   font-size: var(--fs-h3, 2rem);
   font-weight: var(--fw-light, 300);
-  color: #212121;
+  color: var(--gray-900, #212121);
   margin: 0 0 0.5rem;
 }
 
 .section__lead {
-  color: #616161;
+  color: var(--gray-700, #616161);
   margin: 0 0 1.5rem;
 }
 
@@ -88,9 +88,9 @@
 
 .feature-card {
   padding: 1.5rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--gray-300, #e0e0e0);
   border-radius: 0.5rem;
-  background: #fafafa;
+  background: var(--gray-50, #fafafa);
 
   &__icon {
     font-size: 1.5rem;
@@ -101,13 +101,13 @@
   &__title {
     font-size: 1rem;
     font-weight: 600;
-    color: #212121;
+    color: var(--gray-900, #212121);
     margin: 0 0 0.5rem;
   }
 
   &__desc {
     font-size: 0.875rem;
-    color: #757575;
+    color: var(--gray-600, #757575);
     line-height: 1.6;
     margin: 0;
   }
@@ -122,14 +122,14 @@
 .resource-card {
   display: block;
   padding: 1.5rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--gray-300, #e0e0e0);
   border-radius: 0.5rem;
   text-decoration: none;
   transition: border-color 150ms ease, box-shadow 150ms ease;
 
   &:hover {
     border-color: var(--blue-400, #255dbf);
-    box-shadow: 0 2px 8px rgba(0, 51, 142, 0.1);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--blue-500, #00338e) 10%, transparent);
   }
 
   &__title {
@@ -141,7 +141,7 @@
 
   &__desc {
     font-size: 0.875rem;
-    color: #757575;
+    color: var(--gray-600, #757575);
     line-height: 1.6;
     margin: 0;
   }
